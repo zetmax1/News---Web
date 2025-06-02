@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from .models import News, Category
 from .forms import ContactForm
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
 import random
 # Create your views here.
 
@@ -15,8 +16,12 @@ def news_list(request):
 
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news)
+    categories = Category.objects.all()
+    lastest_news = News.published.all().order_by('-publish_time')[:5]
     context = {
-        'news': news
+        'news': news,
+        'latest_news': lastest_news,
+        'categories': categories,
     }
 
     return render(request, 'news/news_detail.html', context=context)
@@ -167,3 +172,14 @@ class SportNewsView(ListView):
         context['shuffle_news'] = shuffle_news
 
         return context
+    
+
+class NewsUpdateView(UpdateView):
+    model = News
+    fields = ('title', 'body', 'image', 'status', )
+    template_name = 'crud/news_update.html'
+
+class NewsDeleteView(DeleteView):
+    model = News
+    template_name = 'crud/news_delete.html'
+    success_url = reverse_lazy('home_page')

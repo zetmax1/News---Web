@@ -11,25 +11,17 @@
 		<div class="col-md-8">
 		 <div class="news_detail">
 		    <div class="news_detail_1">
-		      <a href="#"><img src="{% static 'images/61.jpg' %}" class="img-fluid" alt="img25"></a>
+		      <a href="#"><img src="{{news.image.url}}" class="img-fluid" alt="img25"></a>
 			  <ul class="mt-3 d-flex font_14">
-			<li class="me-3"><a href="#"><i class="bi bi-person col_orange me-1 align-middle"></i> Eget Nulla</a></li>
-			<li class="me-3"><a href="#"><i class="bi bi-clock col_orange me-1 align-middle"></i> May 27, 2018</a></li>
-			<li class="me-3"><a href="#"><i class="bi bi-view-list col_orange me-1 align-middle"></i> List</a></li>
+			<li class="me-3"><a href="#"><i class="bi bi-clock col_orange me-1 align-middle"></i> {{news.updated_time | date:'d F Y'}}</a></li>
 			<li><a href="#"><i class="bi bi-chat col_orange me-1 align-middle"></i> 6 Comment</a></li>
 			</ul>
-			<h2 class="mt-3">It is a long established fact that a reader</h2>
-			<p class="mt-3 font_15">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-			<p class="font_15">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</p>
-			<blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor dolor an incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud there exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure poor dolor in reprehenderit in voluptate velit esse cillum  <b class="d-block mt-2">Mr. Eget Nulla</b></blockquote>
-			<ul class="mt-3 center_left font_14 mt-3">
-		<li class="d-flex"><i class="bi bi-chevron-right me-1 col_orange"></i> Know How Much Revenue Each Electrical Marketing Campaign Generates</li>
-		<li class="mt-2 d-flex"><i class="bi bi-chevron-right me-1 col_orange"></i> Don't Be Shocked When Our Electricians Turn Up On Time</li>
-		<li class="mt-2 d-flex"><i class="bi bi-chevron-right me-1 col_orange"></i> Electrical Is All About Electrician</li>
-		<li class="mt-2 d-flex"><i class="bi bi-chevron-right me-1 col_orange"></i> Measure How Well Their Staff Converts Leads Appointments And Sales</li>
-		</ul>
-			<p class="mt-3 mb-0 font_15">In a free hour when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection.</p>
-			   <b class="fs-5  d-inline-block text-uppercase mt-4">Related <span class="col_orange">Post</span></b>
+			<h2 class="mt-3">{{news.title}}</h2>
+			<p class="mt-3 font_15">{{news.body}}</p>
+
+			<a href="{% url 'update_news' news.slug %}" style="color: aquamarine;">Update</a>
+			<a href="{% url 'delete_news' news.slug %}" style="color: crimson;">Delete</a><br>
+		<b class="fs-5  d-inline-block text-uppercase mt-4">Related <span class="col_orange">Post</span></b>
 	          <hr class="line bg_orange mt-2 mb-4">
 			  <div class="news_1_left1_inner row">
 			   <div class="col-md-7 col-sm-7">
@@ -38,13 +30,13 @@
 					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				 <ul class="mb-0 font_13 justify-content-between d-flex">
 		   <li>
-		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/13.jpg"></a>
+		   <a href="{{news.get_absolute_url}}"><img class="rounded-circle" alt="abc" width="40" src="{% static 'images/13.jpg' %}"></a>
 		   <span class="text-muted ms-2">Eget Nulla</span>
 		   </li>
 		   <li class="my-auto">
-		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 2277</a>
-		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
-			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 16</a>
+		   <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-eye me-1"></i> 2277</a>
+		    <a class="text-muted mx-3" href="{{news.get_absolute_url}}"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
+			 <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-chat me-1"></i> 16</a>
 		   </li>
 		 </ul>
 				 </div>
@@ -52,7 +44,7 @@
 			   <div class="col-md-5 col-sm-5">
 			     <div class="trend_2_in position-relative">
 				<div class="trend_2_in1">
-				  <a href="#"><img src="image/43.jpg" class="img-fluid" alt="abc"></a>
+				  <a href="#"><img src="{% static 'images/43.jpg' %}" class="img-fluid" alt="abc"></a>
 				</div>
 				<div class="trend_2_in2 position-absolute top-0 p-2">
 				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Politics</b>
@@ -62,10 +54,10 @@
 			 </div>
 			 <p class="font_15 mt-4">Power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection.</p>
 			 <ul class="mt-4">
-		 <li  class="d-inline-block me-3 fw-bold">Tags :</li>
-		 <li class="d-inline-block"><a class="d-inline-block bg_light p-1 px-3" href="#">Politics</a></li>
-		 <li class="d-inline-block"><a class="d-inline-block bg_light p-1 px-3" href="#">Sports</a></li>
-		 <li class="d-inline-block"><a class="d-inline-block bg_light p-1 px-3" href="#">Travel</a></li>
+		 <li  class="d-inline-block me-3 fw-bold">Topics :</li>
+		 {% for category in categories %}
+		 <li class="d-inline-block"><a class="d-inline-block bg_light p-1 px-3" href="{% url category.name|add:"_news" %}">{{category.name}}</a></li>	
+		 {% endfor %}
 		</ul>
 		   </div> 
 		   <div class="news_detail_2 mt-4">
@@ -162,30 +154,17 @@
 		      <b class="fs-5  d-inline-block text-uppercase">Latest <span class="col_orange">News</span></b>
 	          <hr class="line bg_orange mt-2 mb-4">
 			  <ul class="mb-0">
-		     <li class="d-flex">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/21.jpg"></a></span>
+				{% for news in latest_news %}
+		     <li class="d-flex mt-3 border-top pt-3">
+			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
 			   <span class="flex-column lh-1">
-				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
-					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Vestibulum quis  magna  bibendum lorem ipsum dolor</a></b>
-					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Lorem</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
+				    <span class="col_orange font_13 text-uppercase fw-bold"> {{news.category}}</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:10}}</a></b>
+					<span class="font_12 d-block mt-2">  <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i>{{news.updated_time | naturaltime}}</span>
 			   </span>
-			 </li>
-			 <li class="d-flex mt-3 border-top pt-3">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/22.jpg"></a></span>
-			   <span class="flex-column lh-1">
-				    <span class="col_orange font_13 text-uppercase fw-bold">  Popular</span>
-					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Accumsan quis ante  eleifend quis sem eget nulla</a></b>
-					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Porta</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
-			   </span>
-			 </li>
-			 <li class="d-flex mt-3 border-top pt-3">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/23.jpg"></a></span>
-			   <span class="flex-column lh-1">
-				    <span class="col_orange font_13 text-uppercase fw-bold">  Latest</span>
-					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Lorem ipsum dolor sed ut labore et dolore magna aliqua.</a></b>
-					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Dolor</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
-			   </span>
-			 </li>
+			 </li><br>
+			
+		{% endfor %}
 		   </ul>
 		   </div>
 		   <div class="news_1_right2 mt-4">

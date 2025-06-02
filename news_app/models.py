@@ -51,14 +51,14 @@ class Contact(models.Model):
         return self.name
     
 
-class Comment(models.Model):
-    name = models.CharField(max_length=120)
-    website = models.EmailField(max_lenth=150)
-    message = models.TextField()
-    posted_time = models.DateTimeField(default=timezone.now)
+# class Comment(models.Model):
+    # name = models.CharField(max_length=120)
+    # website = models.EmailField(max_lenth=150)
+    # message = models.TextField()
+    # posted_time = models.DateTimeField(default=timezone.now)
 
-    class Meta:
-        ordering = ['posted_time']
+    # class Meta:
+    #     ordering = ['posted_time']
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name

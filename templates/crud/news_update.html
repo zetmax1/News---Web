@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load humanize %}
+<title>{% block title %} Sport News {% endblock %} </title>
+
+{% block content %}
+<h2 class="text-center">Update this news</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info ml-2">Update</button>
+</form>
+
+
+
+{% endblock %}
