@@ -1,0 +1,663 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gen Magazine</title>
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+	<link href="{% static 'css/global.css' %}" rel="stylesheet">
+	<link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+
+ <section id="top_head" class="pt-3 pb-3">
+   <div class="container-xl">
+     <div class="row">
+		<div class="col-md-4">
+		 <div class="top_head_left">
+		    <b class="text-uppercase fs-1 lh-1">
+			<a href="index.html">
+			<span class="col_orange">Gen</span>Magazine
+			<span class="d-block text-muted font_12 ms-1 fw-normal">Our Magazine Theme</span>
+			</a>
+			</b>
+		 </div>
+		</div>
+		<div class="col-md-5">
+		 <div class="top_head_right">
+		   <div class="input-group p-1 bg_light  border_light">
+				<input type="text" class="form-control bg-transparent border-0" placeholder="Search Here">
+				<span class="input-group-btn">
+					<button class="btn btn-primary bg_orange rounded-0 p-2 px-3 border-0" type="button">
+						<i class="bi bi-search"></i> </button>
+				</span>
+		</div>
+		 </div>
+		</div>
+		<div class="col-md-3">
+		 <div class="top_head_right_o">
+		     <ul class="mb-0 d-flex justify-content-end social_brands">
+			    <li><a class="d-inline-block" href="login.html">Login</a></li>
+				<li class="mx-2 text-muted">/</li>
+				<li><a class="d-inline-block" href="register.html">Register</a></li>
+			  </ul>
+		 </div>
+		</div>
+	 </div>
+   </div>
+ </section>
+ 
+ <section id="header">
+        <nav class="navbar navbar-expand-lg navbar-light w-100 border-bottom border-top">
+      <div class="container-xl">
+         <a class="d-flex" href="index.html">
+			 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i> Gen Magazine</b>
+	     </a>
+         <button class="navbar-toggler offcanvas-nav-btn  ms-auto me-3" type="button">
+            <img src="image/icons-svg/list.svg" width="40" height="40" alt="Open TemplateOnweb website menu"/>
+         </button>
+         <div class="offcanvas offcanvas-start offcanvas-nav" style="width: 20rem">
+            <div class="offcanvas-header shadow">
+			    <a class="d-flex" href="index.html">
+					 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i> Gen Magazine</b>
+				 </a>
+               <img src="image/icons-svg/x.svg" width="40" height="40" class="ms-auto" data-bs-dismiss="offcanvas" aria-label="Close" alt="Close TemplateOnweb website menu"/>
+			   
+            </div>
+            <div class="offcanvas-body pt-0 align-items-center">
+               <ul class="navbar-nav align-items-lg-center">
+			      <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle ps-0 fs-3" href="index.html" title="Visit home page">
+					  <i class="bi bi-house"></i>
+					  </a>
+				  </li>
+				  <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle" href="politics.html" title="Visit home page">
+					  Politics
+					  </a>
+				  </li>
+				  <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle" href="sports.html" title="Visit home page">
+					  Sports
+					  </a>
+				  </li>
+				  
+				  <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle" href="travel.html" title="Visit home page">
+					  Travel
+					  </a>
+				  </li>
+		
+		          <li class="nav-item dropdown drop_border">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            News<img src="image/icons-svg/chevron-down.svg" width="15" height="15" alt="Submenu open/close icon">
+          </a>
+          <ul class="dropdown-menu drop_1 shadow" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="news.html"> News</a></li>
+			<li><a class="dropdown-item border-0" href="news_detail.html"> News Detail</a></li>
+          </ul>
+        </li>
+		
+				  
+				  <li class="nav-item dropdown drop_border">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Click to see Blogs category">
+					   Popular News<img src="image/icons-svg/chevron-down.svg" width="15" height="15" alt="Submenu open/close icon"></a>
+                     <ul class="dropdown-menu shadow drop_1 shadow">
+                        <li><a class="dropdown-item" href="travel.html">Trending</a></li>
+                        
+                        <li class="dropdown-submenu dropend">
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Sports <img src="image/icons-svg/chevron-right.svg" width="15" height="15"></a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a class="dropdown-item" href="sports.html">Latest</a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item border-0" href="sports.html">Popular</a>
+                              </li>
+                           </ul>
+                        </li>
+						
+						<li class="dropdown-submenu dropend">
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Travel <img src="image/icons-svg/chevron-right.svg" width="15" height="15"></a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a class="dropdown-item" href="travel.html">Places</a>
+                              </li>
+                              <li>
+                                 <a class="dropdown-item border-0" href="travel.html">World Tour</a>
+                              </li>
+                           </ul>
+                        </li>
+						<li class="dropdown-submenu dropend">
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Politics <img src="image/icons-svg/chevron-right.svg" width="15" height="15"></a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a class="dropdown-item border-0" href="politics.html">World News</a>
+                              </li>
+                           </ul>
+                        </li>
+						<li class="dropdown-submenu dropend">
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Other <img src="image/icons-svg/chevron-right.svg" width="15" height="15"></a>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a class="dropdown-item border-0" href="sports.html">Top Rated</a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+				  
+				  <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle" href="team.html" title="Visit home page">
+					  Team
+					  </a>
+				  </li>
+				  
+				  <li class="nav-item dropdown drop_border">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pages<img src="image/icons-svg/chevron-down.svg" width="15" height="15" alt="Submenu open/close icon">
+          </a>
+          <ul class="dropdown-menu drop_1 shadow" aria-labelledby="navbarDropdown">
+			 <li><a class="dropdown-item" href="login.html"> Login</a></li>
+			<li><a class="dropdown-item border-0" href="register.html"> Register</a></li>
+          </ul>
+        </li>
+				  
+				  <li class="nav-item"> 
+				      <a class="nav-link dropdown-toggle" href="contact.html" title="Visit home page">
+					  Contact Us
+					  </a>
+				  </li>
+               </ul>
+			   <ul class="navbar-nav align-items-lg-center ms-auto icon_social">
+			        <li class="nav-item"> 
+				      <a class="d-inline-block fs-4 me-2" href="#"><i class="bi bi-facebook"></i></a>
+					  <a class="d-inline-block  fs-4 me-2" href="#"><i class="bi bi-instagram"></i></a>
+					  <a class="d-inline-block  fs-4" href="#"><i class="bi bi-pinterest"></i></a>
+				  </li>
+                 </ul>
+            </div>
+         </div>    
+         </div>
+      </div>
+   </nav>
+ </section>
+ 
+ 
+ <section id="center" class="center_news pt-5 pb-5">
+   <div class="container-xl">
+      <div class="politics_1 row">
+		<div class="col-md-8">
+		 <div class="politics_1_left">
+		   <div class="news_1_left1_inner row">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Bad Credit Shouldn’t Affect Health Insurance, Experts Say</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/13.jpg"></a>
+		   <span class="text-muted ms-2">Eget Nulla</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 2277</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 16</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/43.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Politics</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+		   <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">What Is Women’s Equality Day and Why Is It Celebrated?</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/14.jpg"></a>
+		   <span class="text-muted ms-2">Lorem Amet</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 1297</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 245</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 13</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/44.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Latest</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Coronavirus Resurgence Could Cause Major Problems for Soldiers Spring</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/15.jpg"></a>
+		   <span class="text-muted ms-2">Ipsum Quis</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 723</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 140</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 17</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/45.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Popular</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Municipal Politicians to Debate Introduction of Vaccination Passport</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/13.jpg"></a>
+		   <span class="text-muted ms-2">Eget Nulla</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 2277</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 16</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/46.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Trending</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/14.jpg"></a>
+		   <span class="text-muted ms-2">Eget Nulla</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 2277</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 16</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/47.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">World</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Aliquam erat volutpat Proin rhoncus est ac ipsum varius fermentum</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/15.jpg"></a>
+		   <span class="text-muted ms-2">Lorem Amet</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 1297</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 245</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 13</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/59.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Sports</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="news_detail.html">Integer a odio ornare mauris pharetra vulputate elit erat</a></b>
+					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <a href="news_detail.html"><img class="rounded-circle" alt="abc" width="40" src="image/13.jpg"></a>
+		   <span class="text-muted ms-2">Qusi Sem</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="news_detail.html"><i class="bi bi-eye me-1"></i> 1498</a>
+		    <a class="text-muted mx-3" href="news_detail.html"><i class="bi bi-heart me-1 col_orange"></i> 219</a>
+			 <a class="text-muted" href="news_detail.html"><i class="bi bi-chat me-1"></i> 17</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="news_detail.html"><img src="image/60.jpg" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Travel</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+			 <div class="paging mt-5">
+		     <ul class="mb-0  paginate text-center mt-4">
+           <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html"><i class="bi bi-chevron-left"></i> </a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block active" href="news_detail.html">1</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html">2</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html">3</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html">4</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html">5</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html">6</a></li>
+          <li class="d-inline-block mt-1 mb-1"><a class="border d-block" href="news_detail.html"><i class="bi bi-chevron-right"></i></a></li>
+         </ul>
+		   </div>
+		 </div>
+		</div>
+		<div class="col-md-4">
+		 <div class="politics_1_right">
+		    <div class="news_pg1_right1 border_light py-4 px-3">
+		  <b class="fs-5  d-inline-block text-uppercase">Our <span class="col_orange">Categories</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+		   <ul class="mb-0 font_14 fw-bold">
+		    <li><a class="d-block col_orange  py-3 px-3 border-bottom bg-white" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Trending <span class="float-end">23</span></a></li>
+			<li><a class="d-block py-3 px-3 border-bottom" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Popular <span class="float-end">12</span></a></li>
+			<li><a class="d-block py-3 px-3 border-bottom" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Sports <span class="float-end">16</span></a></li>
+			<li><a class="d-block py-3 px-3 border-bottom" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Travel <span class="float-end">09</span></a></li>
+			<li><a class="d-block py-3 px-3 border-bottom" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Politics <span class="float-end">07</span></a></li>
+			<li><a class="d-block pt-3 px-3" href="news_detail.html"><i class="bi bi-chevron-right me-1 align-middle"></i> Popular <span class="float-end">17</span></a></li>
+		   </ul>
+		  </div>
+		    <div class="politics_1_right2 mt-4">
+		      <b class="fs-5  d-inline-block text-uppercase">Latest <span class="col_orange">News</span></b>
+	          <hr class="line bg_orange mt-2 mb-4">
+			  <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="me-3"><a href="news_detail.html"><img width="70" alt="abc" src="image/21.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Vestibulum quis  magna  bibendum lorem ipsum dolor</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Lorem</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3 border-top pt-3">
+			   <span class="me-3"><a href="news_detail.html"><img width="70" alt="abc" src="image/22.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Popular</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Accumsan quis ante  eleifend quis sem eget nulla</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Porta</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3 border-top pt-3">
+			   <span class="me-3"><a href="news_detail.html"><img width="70" alt="abc" src="image/23.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Latest</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="news_detail.html">Lorem ipsum dolor sed ut labore et dolore magna aliqua.</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="news_detail.html">Dolor</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> 3 min read</span>
+			   </span>
+			 </li>
+		   </ul>
+		   </div>
+		   <div class="news_1_right2 mt-4">
+		     <b class="fs-5  d-inline-block text-uppercase">New <span class="col_orange">Comments</span></b>
+	         <hr class="line bg_orange mt-2 mb-4">
+			 <ul class="mb-0 mt-4">
+		     <li class="d-flex">
+			   <span class="me-2"><a href="news_detail.html"><img alt="abc" src="image/13.jpg"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Lorem Amet</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="news_detail.html">Nuncekon dolor mi, accumsan quis ante id, eleifend suscipit purus. Praesent augue eros, consectetur eu eleifend inno, eget condimentum auctor</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-2"><a href="news_detail.html"><img alt="abc" src="image/14.jpg"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Porta Sem</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="news_detail.html">Aliquam erat volutpat. Proin rhoncus est ac ipsum varius fermentum. Integer a odio ornare mauris pharetra suscipitot. Integer vulputate elit erat.</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-2"><a href="news_detail.html"><img alt="abc" src="image/15.jpg"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Ipsum Quis</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="news_detail.html">Jungfrau A. Bietschhorn This region is a magnificent area with high mountain ranges, glaciers and is actually the most glaciated…</a></span>
+			   </span>
+			 </li>
+		   </ul>
+			</div>
+			<div class="news_1_right1 mt-4">
+		     <b class="fs-5  d-inline-block text-uppercase">Other <span class="col_orange">News</span></b>
+	         <hr class="line bg_orange mt-2 mb-4">
+			 <div class="center_home1_left position-relative">
+		      <div class="center_home1_left1">
+			   <a href="news_detail.html"><img src="image/5.jpg" class="img-fluid" alt="abc"></a>
+			 </div>
+			 <div class="center_home1_left2 position-absolute bottom-0 bg_back w-100 p-3">
+			   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="flex-column">
+				 <b class="d-block"><a class="text-white" href="news_detail.html">In ac tempor ante, eget iaculis augue nuncekon</a></b>
+				 <span class="text-light d-block font_12 text-uppercase mt-2 d-flex justify-content-between">
+				   <span>Porta / 13 Feb</span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+			   </span>
+			 </li>
+		   </ul>
+			 </div>
+		  </div>
+		    
+		   </div>
+		 </div>
+		</div>
+	  </div>
+   </div>
+ </section>
+ 
+
+ <section id="footer">
+   <div class="footer_m bg_back_dark pt-5 pb-5">
+       <div class="container-xl">
+	     <div class="row row-cols-1 row-cols-md-4 footer_1">
+		   <div class="col">
+		    <div class="footer_1_left">
+			  <b class="text-uppercase fs-2 lh-1">
+			<a class="text-white" href="index.html">
+			<span class="col_orange">Gen</span>Magazine
+			<span class="d-block text-white-50 font_12 ms-1 fw-normal">Our Magazine Theme</span>
+			</a>
+			</b>
+			<b class="text-uppercase  text-white-50 d-block mt-3">Multiconcept Magazine Theme Type</b>
+			<p class="mt-3 text-white-50">NSuspendisse bibendum efficitur orci, a pretium erat mattis nec. Vestibulum antema ypsumi primisot inaetahsjanl faucibus orci luctus etenjot ultrices posuere cubilia andt.</p>
+			<p class="mb-0 text-white-50">Vestibulum quis odio ut dui malesuada ornare ut id tellus. Curabitur viverra at magna ac bibendum. Aliquam erat volutpat. Proin rhoncus est ac ipsum varius fermentum. </p>
+			</div>
+		   </div>
+		   <div class="col">
+		    <div class="footer_1_left">
+			 <b class="fs-5  d-inline-block text-uppercase text-white">Latest <span class="col_orange">Comments</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="me-3"><a href="#"><img alt="abc" src="image/13.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="text-white font_14">  Lorem Amet</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Vestibulum quis  magna  bibendum</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-3"><a href="#"><img alt="abc" src="image/14.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="text-white font_14">  Porta Sem</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Integer non nisl elit quis sem quis</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-3"><a href="#"><img alt="abc" src="image/15.jpg"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="text-white font_14">  Ipsum Quis</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Accumsan quis ante eleifend porta</a></span>
+			   </span>
+			 </li>
+		   </ul>
+			</div>
+		   </div>
+		   <div class="col">
+		    <div class="footer_1_left">
+			 <b class="fs-5  d-inline-block text-uppercase text-white">Subscribe <span class="col_orange">Us</span></b>
+	        <hr class="line bg_orange mt-2 mb-4">
+	        <input class="form-control bg-dark border-0 text-white"  type="text">
+			<span class="d-block mt-3"><a class="button py-2" href="#">Subscribe</a></span>
+			<b class="fs-5  d-inline-block text-uppercase text-white mt-4">Popular <span class="col_orange">Tags</span></b>
+	        <hr class="line bg_orange mt-2 mb-4">
+			<ul class="mb-0 d-flex flex-wrap font_13 text-uppercase">
+		     <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">News</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Headlines</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Politics</a></li>  
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Travel</a></li> 
+			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Event</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Lorem</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Porta</a></li>  
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Ipsum</a></li> 
+			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Eget</a></li>  
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Nulla</a></li> 
+			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Semper</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Quis</a></li>	
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Popular</a></li>  
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Trending</a></li> 
+		   </ul>
+			</div>
+		   </div>
+		   <div class="col">
+		    <div class="footer_1_left">
+			 <b class="fs-5  d-inline-block text-uppercase text-white">Recent <span class="col_orange">Posts</span></b>
+	        <hr class="line bg_orange mt-2 mb-4">
+	   <ul class="mb-0 mt-4">
+		     <li class="d-flex">
+			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/7.jpg"></a></span>
+			   <span class="flex-column">
+				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#">In ac tempor ante, eget  augue nuncekon</a></b>
+			<span class="d-block font_12 text-uppercase text-muted">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 129 <i class="bi bi-clock col_orange ms-2 me-1"></i> 08 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 14 </span>
+				   </span>
+			   </span>
+			 </li>
+             <li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
+			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/8.jpg"></a></span>
+			   <span class="flex-column">
+				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#">Vestibulum quis  ut dui malesuada ornare</a></b>
+			<span class="d-block font_12 text-uppercase text-muted">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 139 <i class="bi bi-clock col_orange ms-2 me-1"></i> 09 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 13 </span>
+				   </span>
+			   </span>
+			 </li>	
+			 <li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
+			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="image/9.jpg"></a></span>
+			   <span class="flex-column">
+				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#"> Bibendum efficitur orci, a pretium erat</a></b>
+			<span class="d-block font_12 text-uppercase text-muted">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 119 <i class="bi bi-clock col_orange ms-2 me-1"></i> 07 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 17 </span>
+				   </span>
+			   </span>
+			 </li>		 
+		   </ul>
+			</div>
+		   </div>
+		 </div>
+	   </div>
+   </div>
+ </section>
+ 
+ <section id="footer_bottom" class="pt-3 pb-3 bg-black">
+ <div class="container-xl">
+     <div class="footer_bottom1 row">
+	<div class="col-md-4">
+	  <div class="footer_bottom1_right">
+       <ul class="text-uppercase font_13 mb-0">
+		    <li class="d-inline-block"><a class="text-white-50 link" href="#"> Facebook</a></li>
+			<li class="d-inline-block mx-2 text-muted">|</li>
+			 <li class="d-inline-block"><a class="text-white-50 link" href="#"> Twitter</a></li>
+			 <li class="d-inline-block mx-2 text-muted">|</li>
+			 <li class="d-inline-block"><a class="text-white-50 link" href="#"> Pinterest</a></li>
+			 <li class="d-inline-block mx-2 text-muted">|</li>
+			 <li class="d-inline-block"><a class="text-white-50 link" href="#"> Instagram</a></li>
+		  </ul>
+	  </div>
+	 </div>
+	 <div class="col-md-8">
+	  <div class="footer_bottom1_left text-end">
+        <p class="mb-0 text-white-50">© 2013 Your Website Name. All Rights Reserved | Design by <a class="col_orange fw-bold" href="http://www.templateonweb.com">TemplateOnWeb</a></p>
+	  </div>
+	 </div>
+   </div>
+  </div>
+</section>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/theme.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block content %}
+
+	<section id="center" class="contact_pg pt-5 pb-5">
+		<div class="container-xl">
+			<div class="contact_pg1 row">
+				<div class="col-md-3">
+					<div class="contact_pg1_left">
+						<div class="contact_pg1_left1 bg_orange py-4 px-3 text-center">
+							<span><a href="#"><i class="bi bi-map"></i></a></span>
+							<h5 class="text-white fs-6 mt-3 mb-3">OFFICE ADDRESS</h5>
+							<h6 class="text-white font_14 mb-0 fw-normal lh-base">Eget city nulla quis , New York. 08
+								june , semper awe 87.</h6>
+						</div>
+						<div class="contact_pg1_left1 bg_orange py-4 px-3 text-center mt-4">
+							<span><a href="#"><i class="bi bi-telephone"></i></a></span>
+							<h5 class="text-white fs-6 mt-3 mb-3">PHONE</h5>
+							<h6 class="text-white font_14 mb-0 fw-normal"><span class="fw-bold">Office :</span> +(000)
+								345 67 89</h6>
+							<h6 class="text-white font_14 mb-0 fw-normal mt-2"><span class="fw-bold">Fax :</span> +(000)
+								345 67 89</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="contact_pg1_right">
+						<h2>Send us a Message</h2>
+						<p class="mt-3  font_15">Vestibulum quis odio ut dui malesuada ornare ut id tellus. Curabitur
+							viverra at magna ac bibendum. Aliquam erat volutpat. Proin rhoncus est ac ipsum varius
+							fermentum. Integer a odio ornare mauris pharetra suscipitot. Integer vulputate elit erat.
+							Vestibulum quam velit, sagittis et ipsum id.</p>
+						<form class="row g-3 needs-validation" novalidate="" method="post">{% csrf_token %}
+							<div class="col-md-6">
+
+								<input type="text" class="form-control font_14 bg_light" id="name" placeholder="Name" name="name"
+									required="">
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid first name.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control font_14 bg_light" id="email" placeholder="Email" name="email"
+									required="">
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid last name.
+								</div>
+							</div>
+							<div class="col-md-6">
+
+								<input type="text" class="form-control font_14 bg_light" id="subject" placeholder="Subject" name="subject"
+									required="">
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid subject.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control font_14 bg_light" id="website" placeholder="Website" name="website"
+									required="">
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid website.
+								</div>
+							</div>
+							<div class="col-md-12">
+								<textarea id="message"  name="message"
+									class="form-control form_text font_14 bg_light" required=""></textarea>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Please provide a valid message.
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-check font_14">
+									<input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+										required="">
+									<label class="form-check-label" for="invalidCheck">
+										Before registration read our <a href="#">Privacy Statement</a> and <a
+											href="#">Terms & Conditions</a>
+									</label>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										You must agree before submitting.
+									</div>
+								</div>
+							</div>
+							<div class="col-12 center_sm">
+								<button class="btn btn-primary button text-white w-50 border-0 rounded-0 fs-5"
+									type="submit">Send <i class="bi bi-arrow-right ms-2 align-middle"></i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row contact_2 mt-4">
+				<div class="col-md-12">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3132.0403403694995!2d69.2867291!3d41.340930199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2s!4v1748581489344!5m2!1sru!2s"
+						height="450" style="border:0; width:100%;" allowfullscreen=""></iframe>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="footer">
+		<div class="footer_m bg_back_dark pt-5 pb-5">
+			<div class="container-xl">
+				<div class="row row-cols-1 row-cols-md-4 footer_1">
+					<div class="col">
+						<div class="footer_1_left">
+							<b class="text-uppercase fs-2 lh-1">
+								<a class="text-white" href="index.html">
+									<span class="col_orange">Gen</span>Magazine
+									<span class="d-block text-white-50 font_12 ms-1 fw-normal">Our Magazine Theme</span>
+								</a>
+							</b>
+							<b class="text-uppercase  text-white-50 d-block mt-3">Multiconcept Magazine Theme Type</b>
+							<p class="mt-3 text-white-50">NSuspendisse bibendum efficitur orci, a pretium erat mattis
+								nec. Vestibulum antema ypsumi primisot inaetahsjanl faucibus orci luctus etenjot
+								ultrices posuere cubilia andt.</p>
+							<p class="mb-0 text-white-50">Vestibulum quis odio ut dui malesuada ornare ut id tellus.
+								Curabitur viverra at magna ac bibendum. Aliquam erat volutpat. Proin rhoncus est ac
+								ipsum varius fermentum. </p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="footer_1_left">
+							<b class="fs-5  d-inline-block text-uppercase text-white">Latest <span
+									class="col_orange">Comments</span></b>
+							<hr class="line bg_orange mt-2 mb-4">
+							<ul class="mb-0">
+								<li class="d-flex">
+									<span class="me-3"><a href="#"><img alt="abc"
+												src="{% static 'images/13.jpg' %}"></a></span>
+									<span class="flex-column lh-1">
+										<span class="text-white font_14"> Lorem Amet</span>
+										<span
+											class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a
+												class="text-white-50 link" href="#">Vestibulum quis magna
+												bibendum</a></span>
+									</span>
+								</li>
+								<li class="d-flex mt-3">
+									<span class="me-3"><a href="#"><img alt="abc"
+												src="{% static 'images/14.jpg' %}"></a></span>
+									<span class="flex-column lh-1">
+										<span class="text-white font_14"> Porta Sem</span>
+										<span
+											class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a
+												class="text-white-50 link" href="#">Integer non nisl elit quis sem
+												quis</a></span>
+									</span>
+								</li>
+								<li class="d-flex mt-3">
+									<span class="me-3"><a href="#"><img alt="abc"
+												src="{% static 'images/15.jpg' %}"></a></span>
+									<span class="flex-column lh-1">
+										<span class="text-white font_14"> Ipsum Quis</span>
+										<span
+											class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a
+												class="text-white-50 link" href="#">Accumsan quis ante eleifend
+												porta</a></span>
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col">
+						<div class="footer_1_left">
+							<b class="fs-5  d-inline-block text-uppercase text-white">Subscribe <span
+									class="col_orange">Us</span></b>
+							<hr class="line bg_orange mt-2 mb-4">
+							<input class="form-control bg-dark border-0 text-white" type="text">
+							<span class="d-block mt-3"><a class="button py-2" href="#">Subscribe</a></span>
+							<b class="fs-5  d-inline-block text-uppercase text-white mt-4">Popular <span
+									class="col_orange">Tags</span></b>
+							<hr class="line bg_orange mt-2 mb-4">
+							<ul class="mb-0 d-flex flex-wrap font_13 text-uppercase">
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">News</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Headlines</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Politics</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Travel</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Event</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Lorem</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Porta</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Ipsum</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Eget</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Nulla</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Semper</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Quis</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Popular</a></li>
+								<li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link"
+										href="news_detail.html">Trending</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col">
+						<div class="footer_1_left">
+							<b class="fs-5  d-inline-block text-uppercase text-white">Recent <span
+									class="col_orange">Posts</span></b>
+							<hr class="line bg_orange mt-2 mb-4">
+							<ul class="mb-0 mt-4">
+								<li class="d-flex">
+									<span class="me-3"><a href="#"><img width="70" alt="abc"
+												src="{% static 'images/7.jpg' %}"></a></span>
+									<span class="flex-column">
+										<b class="d-block mb-1"><a class="font_13 text-white link" href="#">In ac tempor
+												ante, eget augue nuncekon</a></b>
+										<span class="d-block font_12 text-uppercase text-muted">
+											<span><i class="bi bi-eye col_orange me-1"></i> 129 <i
+													class="bi bi-clock col_orange ms-2 me-1"></i> 08 Mins <i
+													class="bi bi-heart col_orange ms-2 me-1"></i> 14 </span>
+										</span>
+									</span>
+								</li>
+								<li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
+									<span class="me-3"><a href="#"><img width="70" alt="abc"
+												src="{% static 'images/8.jpg' %}"></a></span>
+									<span class="flex-column">
+										<b class="d-block mb-1"><a class="font_13 text-white link" href="#">Vestibulum
+												quis ut dui malesuada ornare</a></b>
+										<span class="d-block font_12 text-uppercase text-muted">
+											<span><i class="bi bi-eye col_orange me-1"></i> 139 <i
+													class="bi bi-clock col_orange ms-2 me-1"></i> 09 Mins <i
+													class="bi bi-heart col_orange ms-2 me-1"></i> 13 </span>
+										</span>
+									</span>
+								</li>
+								<li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
+									<span class="me-3"><a href="#"><img width="70" alt="abc"
+												src="{% static 'images/9.jpg' %}"></a></span>
+									<span class="flex-column">
+										<b class="d-block mb-1"><a class="font_13 text-white link" href="#"> Bibendum
+												efficitur orci, a pretium erat</a></b>
+										<span class="d-block font_12 text-uppercase text-muted">
+											<span><i class="bi bi-eye col_orange me-1"></i> 119 <i
+													class="bi bi-clock col_orange ms-2 me-1"></i> 07 Mins <i
+													class="bi bi-heart col_orange ms-2 me-1"></i> 17 </span>
+										</span>
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="footer_bottom" class="pt-3 pb-3 bg-black">
+		<div class="container-xl">
+			<div class="footer_bottom1 row">
+				<div class="col-md-4">
+					<div class="footer_bottom1_right">
+						<ul class="text-uppercase font_13 mb-0">
+							<li class="d-inline-block"><a class="text-white-50 link" href="#"> Facebook</a></li>
+							<li class="d-inline-block mx-2 text-muted">|</li>
+							<li class="d-inline-block"><a class="text-white-50 link" href="#"> Twitter</a></li>
+							<li class="d-inline-block mx-2 text-muted">|</li>
+							<li class="d-inline-block"><a class="text-white-50 link" href="#"> Pinterest</a></li>
+							<li class="d-inline-block mx-2 text-muted">|</li>
+							<li class="d-inline-block"><a class="text-white-50 link" href="#"> Instagram</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="footer_bottom1_left text-end">
+						<p class="mb-0 text-white-50">© 2013 Your Website Name. All Rights Reserved | Design by <a
+								class="col_orange fw-bold" href="http://www.templateonweb.com">TemplateOnWeb</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+			'use strict'
+
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.querySelectorAll('.needs-validation')
+
+			// Loop over them and prevent submission
+			Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+					form.addEventListener('submit', function (event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+
+						form.classList.add('was-validated')
+					}, false)
+				})
+		})()
+	</script>
+
+{% endblock %}

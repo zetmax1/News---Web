@@ -1,0 +1,101 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load humanize %}
+<title>{% block title %}World News{% endblock %} </title>
+
+{% block content %}
+
+ <section id="center" class="center_news pt-5 pb-5">
+      <div class="container-xl">
+   <b class="fs-5  d-inline-block text-uppercase">World <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+      <div class="politics_1 row">
+	    <div class="col-md-8">
+		 <div class="politics_1_left">
+		 {% for news in world_news %}
+		   <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+					<p class="mb-2">{{news.body | truncatewords:20 }}</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <span class="text-muted ms-2">{{news.updated_time | date:'d F Y'}}</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-eye me-1"></i> 1297</a>
+		    <a class="text-muted mx-3" href="{{news.get_absolute_url}}"><i class="bi bi-heart me-1 col_orange"></i> 245</a>
+			 <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-chat me-1"></i> 13</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Latest</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+		{% endfor %}
+		 </div>
+		</div>
+	
+	  </div>
+   </div>
+	<div class="row row-cols-1 row-cols-md-2 news_1_right3_inner mt-4">
+		{% for news in shuffle_news %}
+		{% if forloop.first %}
+			    <div class="col">
+				 <div class="news_1_right3_inner_left">
+				   <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg-danger text-white p-1 px-3 font_12 text-uppercase rounded-1">World</b>
+				</div>
+		      </div>
+			      <div class="trend_2_inner_last mt-3">
+		         <b class="d-block  mb-3 fs-4"><a href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+				 <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}} <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+				 <p class="mt-3">{{news.body | truncatewords:30}}</p>
+		      </div>
+				 </div>
+				</div>
+		
+					{% elif forloop.counter > 1 and forloop.counter < 8 %}
+				<div class="col">
+				 <div class="news_1_right3_inner_right">
+				   <ul class="mb-0">
+					
+		     <li class="d-flex border-bottom  pb-3 mb-3">
+			   <span><a href="{{news.get_absolute_url}}"><img width="100" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column ms-3">
+			      <b class="d-block font_14"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:10 }}</a></b>
+				 <span class="mt-2 font_14 family_1 d-block">{{news.body | truncatewords:15}}</span>
+			   </span>
+			 </li>
+	    {% endif %}
+	{% endfor %}	  
+ </ul>
+				 </div>
+				</div>
+			  </div>
+   </div>
+ </section>
+	
+{% endblock %}

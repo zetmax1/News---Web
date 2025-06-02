@@ -1,0 +1,245 @@
+/*
+Template Name: Gen Magazine
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+
+/*********************news****************/
+.news_1_mid_main1_inner1 .icon_1 {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+.news_1_mid_main2{
+   top:14%;
+   width:60%!important;
+   background:var(--bs-white);
+ }
+.news_1_mid_main2_inner{
+   padding-top:50px;
+ }
+.news_1_mid_main2_inner1{
+   top:-20px;
+   right:20px;
+ }
+/*********************news_end****************/
+
+/*********************feature****************/
+#feature {
+    background-image: url(../image/28.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+/*********************feature_end****************/
+
+/*********************sports****************/
+.video {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+.politics_1_right1 .social_box {
+    min-width:182px; 
+ }
+.news_1_right1 .nav-tabs {
+    border-bottom: 3px solid var(--orange);
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--bs-white);
+    background: var(--orange);
+    border: none;
+}
+.news_1_right1 ul .nav-link {
+    border: none!important;
+    background: var(--bs-dark);
+    color: var(--bs-white);
+    border-radius: 0;
+    margin-right: 3px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+.news_1_right1 ul .nav-link:hover {
+    color: var(--bs-white);
+    background: var(--orange);
+    border: none;
+}
+ blockquote {
+    margin: 30px 0 30px;
+    font-size: 16px;
+    border-left: 5px solid var(--orange);
+    background: var(--bg_light);
+    font-style: italic;
+    padding: 25px 35px 15px;
+}
+/*********************sports_end****************/
+
+
+
+
+@media screen and (max-width : 767px){
+.news_1_mid{
+   margin-top:15px;
+ }
+.news_1_mid_main1_inner img{
+   width:100%;
+ }
+.news_1_mid_main2 {
+    width: 100%!important;
+	position:static!important;
+}
+.news_1_mid_main2_inner{
+   padding-top:0;
+ }
+.news_1_right{
+   margin-top:15px;
+ }
+.news_2_left ul li{
+  margin-top:5px;
+  margin-bottom:5px;
+  margin-left:2px!important;
+  margin-right:2px!important;
+ }
+.feature_1 ul li{
+  margin-top:5px;
+  margin-bottom:5px;
+  margin-left:2px!important;
+  margin-right:2px!important;
+ }
+.city_2_left{
+   margin-bottom:15px;
+ }
+.edit_1_left_inner_right{
+  margin-top:15px;
+ }
+.news_1_mid_main2_inner1 {
+   top:0!important;
+ }
+.news_1_mid_main {
+  margin-top:8px;
+  margin-bottom:8px;
+ }
+.trend_1_left{
+   margin-top:8px;
+   margin-bottom:8px;
+ }
+.politics_1_left .trend_2_in {
+    margin-top:15px;
+ }
+.politics_1_right1 .social_box {
+    min-width:auto;
+}
+.politics_1_right{
+    margin-top:15px;
+ }
+.center_news .center_home1_left {
+     margin-top:8px;
+     margin-bottom:8px;
+ }
+.center_news .center_home1_left  .fs-3{
+     font-size:18px!important;
+ }
+.trend_2_inner{
+      margin-top:8px;
+       margin-bottom:8px;
+}
+.profile3_inner1{
+     margin-top:8px;
+     margin-bottom:8px;
+ }
+.news_1_left1_inner_right{
+      margin-top:10px;
+ }
+.news_1_right1 ul .nav-link {
+     margin-top:5px;
+}
+.news_detail{
+     margin-top:10px;
+ }
+.trend_2_in {
+    margin-top:15px;
+ }
+.news_detail_1 ul li a{
+   margin-top:5px;
+ }
+ }
+
+
+@media (min-width:576px) and (max-width:767px) {
+
+
+ }
+ 
+@media (min-width:768px) and (max-width:991px) {
+.center_home1_left2  b{
+    font-size:11px;
+  }
+.news_1_mid_main1_inner img{
+   width:100%;
+ }
+.news_1_mid_main2 {
+   position:static!important;
+   width:100%!important;
+}
+.news_1_mid_main2_inner{
+   padding-top:15px;
+ }
+.news_1_left2  ul img{
+  width:40px;
+ }
+.news_1_right1 ul img{
+  width:40px;
+ }
+.news_2_left  ul li{
+  margin-top:10px;
+  margin-bottom:10px;
+ }
+.city_2_left ul li img{
+    width:40px;
+ }
+.news_1_mid_main2_inner1 {
+    top:0;
+}
+.trend_1_left{
+   margin-top:8px;
+   margin-bottom:8px;
+ }
+.politics_1_right1 .social_box {
+    min-width:auto;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+.politics_1_right1 ul li {
+    flex-wrap:wrap;
+}
+.feature_1 ul li{
+  margin-top:10px;
+  margin-bottom:10px;
+ }
+ }
+
+@media (min-width:992px) and (max-width:1200px) {
+.news_2_left  ul li{
+  margin-top:10px;
+  margin-bottom:10px;
+ }
+.feature_1 ul li{
+  margin-top:10px;
+  margin-bottom:10px;
+ }
+.politics_1_right1 .social_box {
+    min-width:auto;
+	margin-top:3px;
+	margin-bottom:3px;
+}
+ }
+
+@media (min-width:1201px) and (max-width:1300px) {
+
+ }
+@media (min-width:1400px) and (max-width:2000px) {
+
+ }
+
+

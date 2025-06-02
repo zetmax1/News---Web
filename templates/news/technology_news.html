@@ -1,0 +1,183 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load humanize %}
+<title>{% block title %} Technology News {% endblock %} </title>
+
+{% block content %}
+
+ <section id="center" class="center_news pt-5 pb-5">
+   <div class="container-xl">
+   <b class="fs-5  d-inline-block text-uppercase">Political <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+      <div class="politics_1 row">
+	    <div class="col-md-8">
+		 <div class="politics_1_left">
+		 {% for news in technology_news %}
+		   <div class="news_1_left1_inner row border-top pt-4 mt-4">
+			   <div class="col-md-7 col-sm-7">
+			     <div class="news_1_left1_inner_right">
+				    <b class="d-block  mb-2 fs-5"><a href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+					<p class="mb-2">{{news.body | truncatewords:20 }}</p>
+				 <ul class="mb-0 font_13 justify-content-between d-flex">
+		   <li>
+		   <span class="text-muted ms-2">{{news.updated_time | date:'d F Y'}}</span>
+		   </li>
+		   <li class="my-auto">
+		   <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-eye me-1"></i> 1297</a>
+		    <a class="text-muted mx-3" href="{{news.get_absolute_url}}"><i class="bi bi-heart me-1 col_orange"></i> 245</a>
+			 <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-chat me-1"></i> 13</a>
+		   </li>
+		 </ul>
+				 </div>
+			   </div>
+			   <div class="col-md-5 col-sm-5">
+			     <div class="trend_2_in position-relative">
+				<div class="trend_2_in1">
+				  <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="trend_2_in2 position-absolute top-0 p-2">
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Latest</b>
+				</div>
+		      </div>
+			   </div>
+			 </div>
+		{% endfor %}
+		 </div>
+		</div>
+		<div class="col-md-4">
+		 <div class="politics_1_right">
+		    <div class="politics_1_right1">
+		      <b class="fs-5  d-inline-block text-uppercase">Stay <span class="col_orange">Connected</span></b>
+	          <hr class="line bg_orange mt-2 mb-4">
+			  <ul class="mb-0">
+			   <li class="d-flex justify-content-between">
+			     <span class="d-block border_light rounded-3 d-flex p-2 me-2 social_box">
+				  <span><a class="fs-3 me-2" href="{{news.get_absolute_url}}"><i class="bi bi-twitter-x"></i></a></span>
+				  <span>
+				    <b class="font_13">3.9k Followers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Follow</a></span>
+				  </span>
+				 </span>
+				 <span class="d-block border_light rounded-3 d-flex p-2 social_box">
+				  <span><a class="text-info fs-3 me-2" href="{{news.get_absolute_url}}"><i class="bi bi-facebook"></i></a></span>
+				  <span>
+				    <b class="font_13">2.7k Followers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Like</a></span>
+				  </span>
+				 </span>
+			   </li>
+			   <li class="d-flex mt-2 justify-content-between">
+			     <span class="d-block border_light rounded-3 d-flex p-2 me-2 social_box">
+				  <span><a class="fs-3 me-2 text-danger" href="{{news.get_absolute_url}}"><i class="bi bi-pinterest"></i></a></span>
+				  <span>
+				    <b class="font_13">9.2k Followers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Pin</a></span>
+				  </span>
+				 </span>
+				 <span class="d-block border_light rounded-3 d-flex p-2 social_box">
+				  <span><a class="text-primary fs-3 me-2" href="{{news.get_absolute_url}}"><i class="bi bi-instagram"></i></a></span>
+				  <span>
+				    <b class="font_13">7.5k Followers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Follow</a></span>
+				  </span>
+				 </span>
+			   </li>
+			   <li class="d-flex mt-2 justify-content-between">
+			     <span class="d-block border_light rounded-3 d-flex p-2 me-2 social_box">
+				  <span><a class="fs-3 text-danger me-2" href="{{news.get_absolute_url}}"><i class="bi bi-youtube"></i></a></span>
+				  <span>
+				    <b class="font_13">5.2k Subscribers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Subscribe</a></span>
+				  </span>
+				 </span>
+				 <span class="d-block border_light rounded-3 d-flex p-2 social_box">
+				  <span><a class="text-warning fs-3 me-2" href="{{news.get_absolute_url}}"><i class="bi bi-dribbble"></i></a></span>
+				  <span>
+				    <b class="font_13">3.2k Followers</b>
+					<span class="d-block font_12"><a href="{{news.get_absolute_url}}">Follow</a></span>
+				  </span>
+				 </span>
+			   </li>
+			  </ul>
+		   </div>
+		    <div class="politics_1_right2 mt-4">
+		      <b class="fs-5  d-inline-block text-uppercase">Latest <span class="col_orange">News</span></b>
+	          <hr class="line bg_orange mt-2 mb-4">
+			  <ul class="mb-0">
+				{% for news in shuffle_news %}
+		     <li class="d-flex">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold"> Best</span>
+
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="{% url 'local_news' %}">{{news.category}}</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> {{news.updated_time | date:'d F Y'}}</span>
+			   </span>
+			 </li><br>
+			
+			 {% endfor %}
+		   </ul>
+		   </div>
+		   
+		 </div>
+		</div>
+	  </div>
+   </div>
+ </section>
+ 
+ <section id="center_o">
+   <div class="container-fluid px-0">
+     <div class="row row-cols-1 row-cols-md-2 center_home1 mx-0">
+		{% for news in shuffle_news %}
+		{% if forloop.counter < 3 %}
+	   <div class="col p-0">
+	      <div class="center_home1_left position-relative">
+		      <div class="center_home1_left1">
+			   <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+			 </div>
+			 <div class="center_home1_left2 position-absolute bottom-0  bg_back w-100 p-3">
+			   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="flex-column">
+			     <b class="d-inline-block bg_orange text-white p-1 px-3 font_11 text-uppercase rounded-1 fw-normal">Popular</b>
+				 <b class="d-block fs-2  mt-2"><a class="text-white" href="{{news.get_absolute_url}}">{{news.title | truncatewords:8 }}</a></b>
+			   </span>
+			 </li>
+		   </ul>
+			 </div>
+		  </div>
+	   </div>
+	   {% endif %}
+	   {% endfor %}
+   </div>
+ </section>
+ 
+ <section id="news" class="pt-5 pb-5">
+   <div class="container-xl">
+	  <b class="fs-5  d-inline-block text-uppercase">Editor <span class="col_orange">Choice</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	  <div class="row row-cols-1 row-cols-md-1 news_2">
+	  	   <div class="col">
+	     <div class="news_2_left bg-black p-4">
+		   <ul class="mb-0 d-flex justify-content-between flex-wrap">
+			{% for news in shuffle_news%}
+			{% if forloop.counter < 4 %}
+		   <li class="d-flex">
+		   <img src="{{news.image.url}}" width="50" height="50" class="rounded-circle me-3">
+		   <span>
+		    <b class="d-block  font_14 d-block"><a class="text-white" href="{% url 'local_news' %}">{{news.category}}</a></b>
+			<a href="{{news.get_absolute_url}}"><span class="font_13 text-white-50 family_1 d-block mt-1 w-75">{{news.title | truncatewords:5 }}</span></a>
+		   </span>
+		   </li>
+		   {% endif %}
+		   {% endfor %}
+		 </ul>
+		 </div>
+	   </div>
+	  </div>
+	 
+   </div>
+ </section>
+ 
+
+{% endblock %}

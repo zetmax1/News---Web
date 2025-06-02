@@ -1,0 +1,635 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+ <section id="center" class="center_home">
+   <div class="container-fluid px-0">
+     <div class="row row-cols-1 row-cols-md-2 center_home1 mx-0">
+	   <div class="col p-0">
+		{% for first in news_list %}
+		{% if forloop.first %}
+	      <div class="center_home1_left position-relative">
+		      <div class="center_home1_left1">
+			   <a href="{{first.get_absolute_url}}"><img src="{{first.image.url}}" class="img-fluid" alt="abc"></a>
+			 </div>
+			 <div class="center_home1_left2 position-absolute bottom-0  bg_back w-100 p-3">
+			   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="flex-column">
+			     <b class="d-inline-block bg_orange text-white p-1 px-3 font_11 text-uppercase rounded-1 fw-normal">{{first.category}}</b>
+				 <b class="d-block fs-2  mt-2"><a class="text-white" href="{{first.get_absolute_url}}">{{first.title}}</a></b>
+			   </span>
+			 </li>
+		   </ul>
+			 </div>
+		  </div>
+		  {% endif %}
+		  {% endfor %}
+	   </div>
+	   <div class="col p-0">
+	      <div class="center_home1_right">
+		      <div class="row row-cols-1 row-cols-md-2 row-cols-sm-2 center_home1_right1 mx-0">
+				{% for news in news_list %}
+				{% if forloop.counter > 1 %}
+				<div class="col p-0">
+				  <div class="center_home1_left position-relative">
+		      <div class="center_home1_left1">
+			   <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+			 </div>
+			 <div class="center_home1_left2 position-absolute bottom-0 bg_back w-100 p-3">
+			   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="flex-column">
+			     <b class="d-inline-block bg_orange text-white p-1 px-3 font_11 text-uppercase rounded-1 fw-normal">{{news.category}}</b>
+				 <b class="d-block   mt-2"><a class="text-white" href="{{news.get_absolute_url}}"> {{news.title}} </a></b>
+			   </span>
+			 </li>
+		   </ul>
+			 </div>
+		  </div>
+				</div>
+				{% endif %}
+				{% endfor %}
+			  </div>
+	
+		  </div>
+	   </div>
+	 </div>
+   </div>
+ </section>
+ 
+ <section id="news" class="pt-5 pb-5">
+   <div class="container-xl">
+     <div class="row news_1">
+	    <div class="col-md-3">
+		 <div class="news_1_left">
+		   <div class="news_1_left1">
+		      <b class="fs-5  d-inline-block text-uppercase">Latest <span class="col_orange">News</span></b>
+	          <hr class="line bg_orange mt-2 mb-4">
+			  			{% for news in news_list %}
+						{% if forloop.first %}
+			   <div class="news_1_left1_inner">
+			      <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				 <div class="news_1_left1_inner1 bg-black p-3 px-2">
+				   <b class="d-block"><a class="text-white font_14 link" href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+				   <span class="text-white-50 d-block font_12 text-uppercase mt-2 d-flex justify-content-between">
+				   <span>{{news.updated_time | naturaltime}}</span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+				   {% elif forloop.counter > 1 and forloop.counter < 4 %}
+				   
+				   <ul class="font_14 mt-3 mb-0">
+				
+				    <li class="d-flex"><span class="col_orange me-2 fs-6">{{forloop.counter}}</span> <a class="text-white  link" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></li>
+				{% endif %}
+					{% endfor %}   
+				</ul>
+				 </div>
+			   </div>
+			    
+		   </div>
+		  
+		   <div class="news_1_left2 mt-4">
+		      <b class="fs-5  d-inline-block text-uppercase">Popular <span class="col_orange">News</span></b>
+	          <hr class="line bg_orange mt-2 mb-4">
+			  <ul class="mb-0">
+				{% for news in second_news_list %}
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold"> {{news.category}}</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:5}}</a></b>
+			   </span>
+			 </li> <br>
+			{% endfor %}
+		   </ul>
+		   </div>
+		 </div>
+		</div>
+		<div class="col-md-6">
+		 <div class="news_1_mid">
+		   <b class="fs-5  d-inline-block text-uppercase">Week <span class="col_orange">News</span></b>
+	        <hr class="line bg_orange mt-2 mb-4">
+			{% for news in third_news_list %}
+			<div class="news_1_mid_main position-relative">
+			  <div class="news_1_mid_main1 position-relative">
+			    <div class="news_1_mid_main1_inner">
+				  <a href="{{news.get_absolute_url}}"><img  width="420" alt="abc" src="{{news.image.url}}"></a>
+				</div>
+				<div class="news_1_mid_main1_inner1 position-absolute top-0 pt-3 px-2">
+				  <ul class="mb-0">
+					<li class="d-block fs-6"><a class="d-block bg-info text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-facebook"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-danger text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-twitter"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-success text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-pinterest"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-warning text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-instagram"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg_orange text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-youtube"></i></a></li>
+					   </ul>
+				</div>
+			  </div>
+			   <div class="news_1_mid_main2 position-relative border_light  shadow p-3 position-absolute end-0">
+			    <div class="news_1_mid_main2_inner">
+				  <b class="d-block"><a class="fs-5" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
+				  <p class="mt-3 mb-3">{{news.body | truncatewords:20 }}</p>
+				   <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time| naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+				</div>
+				<div class="news_1_mid_main2_inner1 position-absolute text-end w-100">
+				  <span class="d-inline-block text-center bg-black  py-2 px-3 font_13 text-white">{{ news.updated_time|date:"d" }}<span class="pt-2 mt-2 d-block border_dark  border-end-0 border-bottom-0 border-start-0"> {{news.updated_time|date:"F" }}</span></span>
+				</div>
+			   </div>
+			</div>
+			<br><br><br>
+			{% endfor %}
+		 </div>
+		</div>
+		<div class="col-md-3">
+		 <div class="news_1_right">
+		   <div class="news_1_right1">
+		     <b class="fs-5  d-inline-block text-uppercase">Other <span class="col_orange">News</span></b>
+	         <hr class="line bg_orange mt-2 mb-4">
+			 <div class="center_home1_left position-relative">
+		    
+
+		  </div>
+		  {% for news in news_list %}
+		    <ul class="mb-0 mt-4">
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">{{news.category}}</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{ news.title | truncatewords:7 }}</a></b>
+			   </span>
+			 </li>
+
+			{% endfor %}
+		   </ul>
+		   </div>
+		   <div class="news_1_right2 mt-4">
+		     <b class="fs-5  d-inline-block text-uppercase">New <span class="col_orange">Comments</span></b>
+	         <hr class="line bg_orange mt-2 mb-4">
+			 <ul class="mb-0 mt-4">
+		     <li class="d-flex">
+			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/13.jpg' %}"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Lorem Amet</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Vestibulum quis  magna  bibendum</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/14.jpg' %}"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Porta Sem</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Integer non nisl elit quis sem quis</a></span>
+			   </span>
+			 </li>
+			 <li class="d-flex mt-3">
+			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/15.jpg' %}"></a></span>
+			   <span class="flex-column lh-1 bg-black p-2">
+				    <span class="text-white font_14">  Ipsum Quis</span>
+					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Accumsan quis ante eleifend porta</a></span>
+			   </span>
+			 </li>
+		   </ul>
+			</div>
+		 </div>
+		</div>
+	 </div>
+	  <b class="fs-5  d-inline-block text-uppercase mt-4">Editor <span class="col_orange">Choice</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	  <div class="row row-cols-1 row-cols-md-1 news_2">
+	  	   <div class="col">
+	     <div class="news_2_left bg-black p-4">
+		   <ul class="mb-0 d-flex justify-content-between flex-wrap">
+			{% for category in categories %}
+		   <li class="d-flex">
+		   <img src="{% static 'images/14.jpg' %}" width="50" height="50" class="rounded-circle me-3">
+		   <span>
+		    <b class="d-block  d-block font_14"><a class="text-white" href="{% url category.name|add:"_news" %}">{{category.name}}</a></b>
+			<span class="font_13 text-white-50 family_1 d-block mt-1 w-75">{{category.name}}</span>
+		   </span>
+		   </li>
+		   {% endfor %}
+		 </ul>
+		 </div>
+	   </div>
+	  </div>
+   </div>
+ </section>
+ 
+ <section id="city" class="pb-5">
+   <div class="container-xl">
+    <div class="row city_1 text-center">
+	  <div class="col-md-12">
+         <b class="fs-2  d-inline-block text-uppercase">More <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4 mx-auto">	  
+	  </div>
+	</div>
+	<div class="row row-cols-1 row-cols-md-4 city_2">
+	  <div class="col">
+       <div class="city_2_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Sports <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   <ul class="mb-0">
+			{% for news in sport_news %}
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:5}}</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="{{news.get_absolute_url}}">{{news.category}}</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> {{news.updated_time | naturaltime}}</span>
+			   </span>
+			 </li><br>
+			 {% endfor %}
+		   </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="city_2_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Traditional<span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   <ul class="mb-0">
+			{% for news in local_news %}
+	
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:5}}</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="{{news.get_absolute_url}}">{{news.category}}</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> {{news.updated_time | naturaltime}}</span>
+			   </span>
+			 </li> <br>
+			 {% endfor %}
+		   </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="city_2_left">
+	     <b class="fs-5  d-inline-block text-uppercase">World<span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	 	   <ul class="mb-0">
+			{% for news in world_news %}
+	
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:5}}</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="{{news.get_absolute_url}}">{{news.category}}</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> {{news.updated_time | naturaltime}}</span>
+			   </span>
+			 </li> <br>
+
+			 {% endfor %}
+		   </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="city_2_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Technology<span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   <ul class="mb-0">
+			{% for news in technology_news %}
+	
+		     <li class="d-flex bg_light py-3 px-2">
+			   <span class="me-3"><a href="{{news.get_absolute_url}}"><img width="70" alt="abc" src="{{news.image.url}}"></a></span>
+			   <span class="flex-column lh-1">
+				    <span class="col_orange font_13 text-uppercase fw-bold">  Best</span>
+					<b class="d-block font_14  mt-2 lh-base"><a href="{{news.get_absolute_url}}">{{news.title | truncatewords:5}}</a></b>
+					<span class="font_12 d-block mt-2"> <a class="col_orange" href="{{news.get_absolute_url}}">{{news.category}}</a> <i class="bi bi-clock col_orange me-1 align-middle  ms-2"></i> {{news.updated_time | naturaltime}}</span>
+			   </span>
+			 </li><br>
+
+			 {% endfor %}
+		   </ul>
+	   </div>	  
+	  </div>
+	</div>
+   </div>
+ </section>
+
+ 
+ <section id="edit" class="pb-5 pt-5">
+   <div class="container-xl">
+    <div class="row city_1 text-center">
+	  <div class="col-md-12">
+         <b class="fs-2  d-inline-block text-uppercase">Editorial <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4 mx-auto">	  
+	  </div>
+	</div>
+	<div class="row row-cols-1 row-cols-md-2 edit_1">
+	  <div class="col">
+         <div class="edit_1_left shadow p-3">
+		   <b class="fs-5  d-inline-block text-uppercase mt-4">Political <span class="col_orange">Editorial</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   {% for news in news_list %}
+	   {% if forloop.first %}
+	   <div class="edit_1_left_inner row">
+			   <div class="col-md-4  col-sm-4">
+			     <div class="edit_1_left_inner_left position-relative">
+				<div class="edit_1_left_inner_left_in">
+				  <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="edit_1_left_inner_left_in1 position-absolute top-0">
+				  <span class="d-inline-block text-center bg-black text-white  py-1 px-2 font_11 text-uppercase fw-bold">12  <span class="mt-1 d-block">Posts</span></span>
+				</div>
+		      </div>
+			   </div>
+			   <div class="col-md-8  col-sm-8">
+			     <div class="edit_1_left_inner_right">
+				    <span class="text-muted text-uppercase font_13">Head Editor</span>
+				    <b class="d-block mt-1">{{news.category}}</b>
+				    <p class="font_13 mt-1 mb-2">{{news.body | truncatewords:20 }}</p>
+					<ul class="mb-0 d-flex  social_brands font_14">
+			    <li><a class="d-inline-block" href="#"><i class="bi bi-facebook"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-instagram"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-linkedin"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-pinterest"></i></a></li>
+			  </ul>
+				 </div>
+			   </div>
+			 </div>
+		{% else %}
+		 <ul class="mb-0 mt-3 justify-content-between d-flex">
+		   <li>
+		     <b class="d-block  mb-1"><a href="#">{{news.title }}</a></b>
+				 <span class="text-muted font_12 text-uppercase">
+				 <i class="bi bi-calendar me-1 col_orange"></i> {{news.updated_time | date:'d F'}}
+				 <i class="bi bi-heart me-1 col_orange ms-2"></i> 
+								 18</span>
+		   </li>
+		 </ul>
+		 {% endif %}
+		{% endfor %}
+		 </div>
+		 
+	  </div>
+	 <div class="col">
+         <div class="edit_1_left shadow p-3">
+		   <b class="fs-5  d-inline-block text-uppercase mt-4">News <span class="col_orange">Editorial</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	   {% for news in news_list %}
+	   {% if forloop.first %}
+	   <div class="edit_1_left_inner row">
+			   <div class="col-md-4  col-sm-4">
+			     <div class="edit_1_left_inner_left position-relative">
+				<div class="edit_1_left_inner_left_in">
+				  <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+				</div>
+				<div class="edit_1_left_inner_left_in1 position-absolute top-0">
+				  <span class="d-inline-block text-center bg-black text-white  py-1 px-2 font_11 text-uppercase fw-bold">12  <span class="mt-1 d-block">Posts</span></span>
+				</div>
+		      </div>
+			   </div>
+			   <div class="col-md-8  col-sm-8">
+			     <div class="edit_1_left_inner_right">
+				    <span class="text-muted text-uppercase font_13">Head Editor</span>
+				    <b class="d-block mt-1">{{news.category}}</b>
+				    <p class="font_13 mt-1 mb-2">{{news.body | truncatewords:20 }}</p>
+					<ul class="mb-0 d-flex  social_brands font_14">
+			    <li><a class="d-inline-block" href="#"><i class="bi bi-facebook"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-instagram"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-linkedin"></i></a></li>
+				<li class="ms-2"><a class="d-inline-block" href="#"><i class="bi bi-pinterest"></i></a></li>
+			  </ul>
+				 </div>
+			   </div>
+			 </div>
+		{% else %}
+		 <ul class="mb-0 mt-3 justify-content-between d-flex">
+		   <li>
+		     <b class="d-block  mb-1"><a href="#">{{news.title }}</a></b>
+				 <span class="text-muted font_12 text-uppercase">
+				 <i class="bi bi-calendar me-1 col_orange"></i> {{news.updated_time | date:'d F'}}
+				 <i class="bi bi-heart me-1 col_orange ms-2"></i> 
+								 18</span>
+		   </li>
+		 </ul>
+		 {% endif %}
+		{% endfor %}
+		 </div>
+		 
+	  </div>
+	</div>
+	 <b class="fs-5  d-inline-block text-uppercase mt-4">Reader <span class="col_orange">Choices</span></b>
+	  <hr class="line bg_orange mt-2 mb-4">
+	  <div class="row row-cols-1 row-cols-md-3 center_home1_right1 mx-0">
+		{% for news in news_list_3 %}
+			    <div class="col p-0">
+				  <div class="center_home1_left position-relative">
+		      <div class="center_home1_left1">
+			   <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
+			 </div>
+			 <div class="center_home1_left2 position-absolute bottom-0  bg_back w-100 p-3">
+			   <ul class="mb-0">
+		     <li class="d-flex">
+			   <span class="flex-column">
+				 <b class="d-block   mt-2"><a class="text-white" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7 }}</a></b>
+				 <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span class="text-white mt-2"><i class="bi bi-eye col_orange me-1"></i> 163 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 38 </span>
+				   <span class="text-warning mt-1">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+			   </span>
+			 </li>
+		   </ul>
+			 </div>
+			 
+			 <div class="center_home1_lefto position-absolute top-0">
+			    <b class="d-inline-block bg_orange text-white p-1 px-2 font_12 text-uppercase  fw-normal">88%</b>
+			 </div>
+		  </div>
+				</div>
+			{% endfor %}  
+			</div>
+   </div>
+ </section>
+ 
+ <section id="latest" class="pb-5">
+   <div class="container-xl">
+    <div class="row city_1 text-center">
+	  <div class="col-md-12">
+         <b class="fs-2  d-inline-block text-uppercase">Today's <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4 mx-auto">	  
+	  </div>
+	</div>
+	<div class="row row-cols-1 row-cols-md-2 latest_1">
+		{% for news in latest_news %}
+	  <div class="col">
+         <div class="news_1_mid_main position-relative">
+			  <div class="news_1_mid_main1 position-relative">
+			    <div class="news_1_mid_main1_inner">
+				  <a href="{{news.get_absolute_url}}"><img width="420" alt="abc" src="{{news.image.url}}"></a>
+				</div>
+				<div class="news_1_mid_main1_inner1 position-absolute top-0 pt-3 px-2">
+				  <ul class="mb-0">
+					<li class="d-block fs-6"><a class="d-block bg-info text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-facebook"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-danger text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-twitter"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-success text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-pinterest"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg-warning text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-instagram"></i></a></li>
+					<li class="d-block fs-6 mt-2"><a class="d-block bg_orange text-white  rounded-circle text-center icon_1" href="#"><i class="bi bi-youtube"></i></a></li>
+					   </ul>
+				</div>
+			  </div>
+			   <div class="news_1_mid_main2 position-relative border_light  shadow p-3 position-absolute end-0">
+			    <div class="news_1_mid_main2_inner">
+				  <b class="d-block"><a class="fs-5" href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+				  <p class="mt-3 mb-3">{{news.body | truncatewords:40}}</p>
+				   <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}} <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+				</div>
+				<div class="news_1_mid_main2_inner1 position-absolute text-end w-100">
+				  <span class="d-inline-block text-center bg-black  py-2 px-3 font_13 text-white">{{news.updated_time | date:'d'}}<span class="pt-2 mt-2 d-block border_dark  border-end-0 border-bottom-0 border-start-0">{{news.updated_time | date:'F'}}</span></span>
+				</div>
+			   </div>
+			</div>	  
+	  </div>
+	  {% endfor %}
+	</div>
+   </div>
+ </section>
+ 
+ <section id="trend" class="pb-5" style="margin-top: 120px;">
+   <div class="container-xl">
+    <div class="row city_1 text-center">
+	  <div class="col-md-12">
+         <b class="fs-2  d-inline-block text-uppercase">Trending <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4 mx-auto">	  
+	  </div>
+	</div>
+	<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 trend_1">
+	  <div class="col">
+       <div class="trend_1_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Sports <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	     <ul class="mb-0">
+			{% for news in sport_news %}
+		  <li>
+		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
+			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+		  </li><br>
+		 {% endfor %}
+		 </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="trend_1_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Local<span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	     <ul class="mb-0">
+				{% for news in local_news %}
+		  <li>
+		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
+			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+		  </li><br>
+		 {% endfor %}
+		 </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="trend_1_left">
+	     <b class="fs-5  d-inline-block text-uppercase">World <span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	     <ul class="mb-0">
+				{% for news in world_news %}
+		  <li>
+		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
+			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+		  </li><br>
+		 {% endfor %}
+		 </ul>
+	   </div>	  
+	  </div>
+	  <div class="col">
+       <div class="trend_1_left">
+	     <b class="fs-5  d-inline-block text-uppercase">Technology<span class="col_orange">News</span></b>
+	   <hr class="line bg_orange mt-2 mb-4">
+	     <ul class="mb-0">
+				{% for news in technology_news %}
+		  <li>
+		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
+			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
+				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span class="text-warning">
+				     <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+					 <i class="bi bi-star-fill"></i>
+				   </span>
+				   </span>
+		  </li><br>
+		 {% endfor %}
+		 </ul>
+	   </div>	  
+	  </div>
+	</div>
+   </div>
+ </section>
+
+		<script>
+		 var templateVideoModal = document.getElementById('templateVideoModal');
+		  templateVideoModal.addEventListener('hide.bs.modal', function () {
+			var iframe = document.getElementById('youtubeVideo');
+			iframe.src = ''; 
+		  });
+		
+		  templateVideoModal.addEventListener('show.bs.modal', function () {
+			var iframe = document.getElementById('youtubeVideo');
+			iframe.src = 'https://www.youtube.com/embed/xHYMdZvV1f0?autoplay=1'; 
+		  });
+		</script>
+{% endblock %}
