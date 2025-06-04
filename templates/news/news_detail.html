@@ -23,36 +23,29 @@
 			<a href="{% url 'delete_news' news.slug %}" style="color: crimson;">Delete</a><br>
 		<b class="fs-5  d-inline-block text-uppercase mt-4">Related <span class="col_orange">Post</span></b>
 	          <hr class="line bg_orange mt-2 mb-4">
+			  {% for news in shuffle_news %}
+			  {% if forloop.counter < 3 %}
 			  <div class="news_1_left1_inner row">
 			   <div class="col-md-7 col-sm-7">
 			     <div class="news_1_left1_inner_right">
-				    <b class="d-block  mb-2 fs-5"><a href="#">Bad Credit Shouldn’t Affect Health Insurance, Experts Say</a></b>
-					<p class="mb-2">Lorem ipsum dolor sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				 <ul class="mb-0 font_13 justify-content-between d-flex">
-		   <li>
-		   <a href="{{news.get_absolute_url}}"><img class="rounded-circle" alt="abc" width="40" src="{% static 'images/13.jpg' %}"></a>
-		   <span class="text-muted ms-2">Eget Nulla</span>
-		   </li>
-		   <li class="my-auto">
-		   <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-eye me-1"></i> 2277</a>
-		    <a class="text-muted mx-3" href="{{news.get_absolute_url}}"><i class="bi bi-heart me-1 col_orange"></i> 545</a>
-			 <a class="text-muted" href="{{news.get_absolute_url}}"><i class="bi bi-chat me-1"></i> 16</a>
-		   </li>
-		 </ul>
+				    <b class="d-block  mb-2 fs-5"><a href="{{news.get_absolute_url}}">{{news.title}}</a></b>
+					<p class="mb-2">{{news.body | truncatewords:30}}</p>
 				 </div>
 			   </div>
 			   <div class="col-md-5 col-sm-5">
 			     <div class="trend_2_in position-relative">
 				<div class="trend_2_in1">
-				  <a href="#"><img src="{% static 'images/43.jpg' %}" class="img-fluid" alt="abc"></a>
+				  <a href="#"><img src="{{news.image.url}}" class="img-fluid" alt="abc"></a>
 				</div>
 				<div class="trend_2_in2 position-absolute top-0 p-2">
-				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">Politics</b>
+				  <b class="d-inline-block bg_orange text-white p-2 px-3 font_12  rounded-1">{{news.category}}</b>
 				</div>
 		      </div>
 			   </div>
 			 </div>
-			 <p class="font_15 mt-4">Power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection.</p>
+			 <br>
+			 {% endif %}
+			 {% endfor %}
 			 <ul class="mt-4">
 		 <li  class="d-inline-block me-3 fw-bold">Topics :</li>
 		 {% for category in categories %}
@@ -142,12 +135,9 @@
 		  <b class="fs-5  d-inline-block text-uppercase">Our <span class="col_orange">Categories</span></b>
 	   <hr class="line bg_orange mt-2 mb-4">
 		   <ul class="mb-0 font_14 fw-bold">
-		    <li><a class="d-block col_orange  py-3 px-3 border-bottom bg-white" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Trending <span class="float-end">23</span></a></li>
-			<li><a class="d-block py-3 px-3 border-bottom" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Popular <span class="float-end">12</span></a></li>
-			<li><a class="d-block py-3 px-3 border-bottom" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Sports <span class="float-end">16</span></a></li>
-			<li><a class="d-block py-3 px-3 border-bottom" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Travel <span class="float-end">09</span></a></li>
-			<li><a class="d-block py-3 px-3 border-bottom" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Politics <span class="float-end">07</span></a></li>
-			<li><a class="d-block pt-3 px-3" href="#"><i class="bi bi-chevron-right me-1 align-middle"></i> Business <span class="float-end">17</span></a></li>
+			{% for category in categories %}
+			<li><a class="d-block py-3 px-3 border-bottom" href="{% url category.name|add:"_news" %}"><i class="bi bi-chevron-right me-1 align-middle"></i>{{category.name}}<span class="float-end">{{category.news.count}}</span></a></li>
+			{% endfor %}
 		   </ul>
 		  </div>
 		    <div class="politics_1_right2 mt-4">
@@ -172,21 +162,21 @@
 	         <hr class="line bg_orange mt-2 mb-4">
 			 <ul class="mb-0 mt-4">
 		     <li class="d-flex">
-			   <span class="me-2"><a href="#"><img alt="abc" src="image/13.jpg"></a></span>
+			   <span class="me-2"><a href="#"><img alt="abc" src="{% static 'images/13.jpg' %}"></a></span>
 			   <span class="flex-column lh-1 bg-black p-2">
 				    <span class="text-white font_14">  Lorem Amet</span>
 					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Nuncekon dolor mi, accumsan quis ante id, eleifend suscipit purus. Praesent augue eros, consectetur eu eleifend inno, eget condimentum auctor</a></span>
 			   </span>
 			 </li>
 			 <li class="d-flex mt-3">
-			   <span class="me-2"><a href="#"><img alt="abc" src="image/14.jpg"></a></span>
+			   <span class="me-2"><a href="#"><img alt="abc" src="{% static 'images/14.jpg' %}"></a></span>
 			   <span class="flex-column lh-1 bg-black p-2">
 				    <span class="text-white font_14">  Porta Sem</span>
 					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Aliquam erat volutpat. Proin rhoncus est ac ipsum varius fermentum. Integer a odio ornare mauris pharetra suscipitot. Integer vulputate elit erat.</a></span>
 			   </span>
 			 </li>
 			 <li class="d-flex mt-3">
-			   <span class="me-2"><a href="#"><img alt="abc" src="image/15.jpg"></a></span>
+			   <span class="me-2"><a href="#"><img alt="abc" src="{% static 'images/15.jpg' %}"></a></span>
 			   <span class="flex-column lh-1 bg-black p-2">
 				    <span class="text-white font_14">  Ipsum Quis</span>
 					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Jungfrau A. Bietschhorn This region is a magnificent area with high mountain ranges, glaciers and is actually the most glaciated…</a></span>
@@ -199,7 +189,7 @@
 	         <hr class="line bg_orange mt-2 mb-4">
 			 <div class="center_home1_left position-relative">
 		      <div class="center_home1_left1">
-			   <a href="#"><img src="image/5.jpg" class="img-fluid" alt="abc"></a>
+			   <a href="#"><img src="{% static 'images/5.jpg' %}" class="img-fluid" alt="abc"></a>
 			 </div>
 			 <div class="center_home1_left2 position-absolute bottom-0 bg_back w-100 p-3">
 			   <ul class="mb-0">

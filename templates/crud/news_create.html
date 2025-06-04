@@ -1,14 +1,14 @@
 {% extends 'news/base.html' %}
 {% load static %}
 {% load humanize %}
-<title>{% block title %} Update News {% endblock %} </title>
+<title>{% block title %} Create News {% endblock %} </title>
 
 {% block content %}
-<h2 class="text-center">Update this news</h2>
+<h2 class="text-center">Add news</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-info ml-2">Update</button>
+    <button type="submit" class="btn btn-info ml-2">Create</button>
 </form>
 
 {% endblock %}

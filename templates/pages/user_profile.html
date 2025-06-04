@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} My Profile{% endblock title %}
+
+{% block content %}
+<div style="display: block; justify-content: center;">
+ 
+    <div style="display: flex;">
+    <h2>Welcome your profile {{request.user.username}} </h2>
+       {% if request.user.is_authenticated  %}
+    <p style="color: red;"><a href="{% url 'logout' %}">Logout</a></p>
+    {% endif %}
+    </div> 
+    <h3>Your information</h3>
+    <label>Username:  </label><input value="{{user.username}}" readonly style="margin-left: 15px;"><br>
+    <label>Email:  </label><input value="{{user.email}}" readonly style="margin-left: 15px;"><br>
+    <label>First name:  </label><input value="{{user.first_name}}" readonly style="margin-left: 15px;"><br>
+    <label>Last name:  <label><input value="{{user.last_name}}" readonly style="margin-left: 15px;"><br>
+</div>
+<h4><a href="{% url 'password_change' %}">Change password</a></h4>
+{% endblock %}

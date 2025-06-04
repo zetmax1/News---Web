@@ -16,40 +16,44 @@ def news_list(request):
 
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news)
-    categories = Category.objects.all()
+    categories = Category.objects.prefetch_related('news').all()
     lastest_news = News.published.all().order_by('-publish_time')[:5]
+    shuffle_news = list(News.published.all())
+    random.shuffle(shuffle_news)
+ 
     context = {
         'news': news,
         'latest_news': lastest_news,
         'categories': categories,
+        'shuffle_news': shuffle_news,
     }
 
     return render(request, 'news/news_detail.html', context=context)
 
-def homePageView(request):
-    first_news = News.published.all().order_by('-publish_time')[:1]
-    news_list = News.published.all().order_by('-publish_time')[1:5]
-    sport_news = News.published.filter(category__name='sport').order_by('-publish_time')[:4]
-    world_news = News.published.filter(category__name='world').order_by('-publish_time')[:4]
-    local_news = News.published.filter(category__name='local').order_by('-publish_time')[:4]
-    technology_news = News.published.filter(category__name='technology').order_by('-publish_time')[:4]
-    second_news_list = News.published.all().order_by('-publish_time')[5:9]
-    third_news_list = News.published.all().order_by('-publish_time')[1:3]
-    categories = Category.objects.all()
-    context = {
-        'news_list': news_list,
-        'sport_news': sport_news,
-        'world_news': world_news,
-        'local_news': local_news,
-        'technology_news': technology_news,
-        'categories': categories,
-        'first_news': first_news,
-        'second_news_list': second_news_list,
-        'third_news_list': third_news_list,
+# def homePageView(request):
+#     first_news = News.published.all().order_by('-publish_time')[:1]
+#     news_list = News.published.all().order_by('-publish_time')[1:5]
+#     sport_news = News.published.filter(category__name='sport').order_by('-publish_time')[:4]
+#     world_news = News.published.filter(category__name='world').order_by('-publish_time')[:4]
+#     local_news = News.published.filter(category__name='local').order_by('-publish_time')[:4]
+#     technology_news = News.published.filter(category__name='technology').order_by('-publish_time')[:4]
+#     second_news_list = News.published.all().order_by('-publish_time')[5:9]
+#     third_news_list = News.published.all().order_by('-publish_time')[1:3]
+#     categories = Category.objects.all()
+#     context = {
+#         'news_list': news_list,
+#         'sport_news': sport_news,
+#         'world_news': world_news,
+#         'local_news': local_news,
+#         'technology_news': technology_news,
+#         'categories': categories,
+#         'first_news': first_news,
+#         'second_news_list': second_news_list,
+#         'third_news_list': third_news_list,
 
-    }
+#     }
 
-    return render(request, 'news/index.html', context=context)
+#     return render(request, 'news/index.html', context=context)
 
 
 class HomePageView(ListView):
@@ -183,3 +187,10 @@ class NewsDeleteView(DeleteView):
     model = News
     template_name = 'crud/news_delete.html'
     success_url = reverse_lazy('home_page')
+
+
+class NewsCreateView(CreateView):
+    model = News
+    template_name = 'crud/news_create.html'
+    fields = ('__all__')
+ 

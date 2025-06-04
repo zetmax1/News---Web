@@ -22,7 +22,7 @@ class News(models.Model):
     slug = models.SlugField(max_length=250)
     body = models.TextField()
     image = models.ImageField(upload_to='news/images')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='news' )
     publish_time = models.DateTimeField(default=timezone.now)
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
