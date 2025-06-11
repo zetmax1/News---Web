@@ -14,13 +14,16 @@
 		      <a href="#"><img src="{{news.image.url}}" class="img-fluid" alt="img25"></a>
 			  <ul class="mt-3 d-flex font_14">
 			<li class="me-3"><a href="#"><i class="bi bi-clock col_orange me-1 align-middle"></i> {{news.updated_time | date:'d F Y'}}</a></li>
-			<li><a href="#"><i class="bi bi-chat col_orange me-1 align-middle"></i> 6 Comment</a></li>
+			<li><a href="#"><i class="bi bi-chat col_orange me-1 align-middle"></i> {{ comment_count }} Comment </a></li>
+{#            <li><a href="#"><i class="bi bi-eye col_orange me-1 align-middle"></i> {{ news.views_count }}</a></li>#}
 			</ul>
 			<h2 class="mt-3">{{news.title}}</h2>
 			<p class="mt-3 font_15">{{news.body}}</p>
-
-			<a href="{% url 'update_news' news.slug %}" style="color: aquamarine;">Update</a>
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+            	<a href="{% url 'update_news' news.slug %}" style="color: aquamarine;">Update</a>
 			<a href="{% url 'delete_news' news.slug %}" style="color: crimson;">Delete</a><br>
+            {% endif %}
+
 		<b class="fs-5  d-inline-block text-uppercase mt-4">Related <span class="col_orange">Post</span></b>
 	          <hr class="line bg_orange mt-2 mb-4">
 			  {% for news in shuffle_news %}
@@ -52,7 +55,43 @@
 		 <li class="d-inline-block"><a class="d-inline-block bg_light p-1 px-3" href="{% url category.name|add:"_news" %}">{{category.name}}</a></li>	
 		 {% endfor %}
 		</ul>
-		   </div> 
+		   </div>
+        {% for comment in comments %}
+            <div class="comments" style="padding: 10px">
+            <p class="font-weight-bold">
+            {{ comment.user }}
+            <span class="text-muted font-weight-normal">
+                {{ comment.created_time }}
+            </span>
+            </p>
+            <p>{{ comment.body | linebreaks }}</p>
+            </div>
+        {% endfor %}
+
+         {% if request.user.is_authenticated %}
+         <div class="col-md-8 card mb-4 mt-3">
+             <div class="card-body">
+            <b class="fs-5  d-inline-block text-uppercase">Leave <span class="col_orange">Comment</span></b>
+            <hr class="line bg_orange mt-2 mb-4">
+             <form method="post" style="margin-top: 1.3rem" >
+                 {% csrf_token %}
+                 {{ comment_form.as_p }}
+                 <button type="submit" class="btn btn-primary btn-lg">Send</button>
+             </form>
+             </div>
+
+         </div>
+         {% else %}
+             <div class="card-body0">
+             <p class="text-danger">only registrated users can leave commets</p>
+             <p style="color: springgreen"><a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></p>
+             </div>
+         {% endif %}
+
+
+
+
+
 		   <div class="news_detail_2 mt-4">
 		      <b class="fs-5  d-inline-block text-uppercase">Recent <span class="col_orange">Comments</span></b>
 	          <hr class="line bg_orange mt-2 mb-4">
@@ -80,7 +119,7 @@
 	          <hr class="line bg_orange mt-2 mb-4">
 			   <form class="row g-3 needs-validation" novalidate="">
 			<div class="col-md-6">
-				
+
 				<input type="text" class="form-control font_14 bg_light" id="name" placeholder="Name" required="">
 				<div class="valid-feedback">
 				  Looks good!
@@ -98,7 +137,7 @@
 				  Please provide a valid last name.
 				</div>
 			</div>
-	
+
 	        <div class="col-md-12">
 			 <textarea id="message" value="Your Message (Maximum 300 words)" class="form-control form_text font_14 bg_light" required=""></textarea>
 			    <div class="valid-feedback">

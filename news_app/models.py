@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.utils.text import  slugify
 # Create your models here.
 
 class PublishedManeger(models.Manager):
@@ -34,6 +36,11 @@ class News(models.Model):
     class Meta:
         ordering = ['-publish_time']
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title
     
@@ -49,7 +56,20 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class Comments(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    body = models.TextField()
+    created_time = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['created_time']
+
+    def __str__(self):
+        return f'{self.news.title} by {self.user.username}'
+
 
 # class Comment(models.Model):
     # name = models.CharField(max_length=120)

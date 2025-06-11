@@ -1,0 +1,28 @@
+{% extends 'news/base.html' %}
+{% block title %} Search results {% endblock %}
+{% block content %}
+<h3>Search results</h3>
+
+{#    	 style="color: #b02a37"><p>{{ news.title }}</p>#}
+{#        <img src="{{ news.image.url }}" width="30%">#}
+{#        <p style="color: grey">{{ news.body | truncatewords:30 }}</p>#}
+{#    #}
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for news in search_results %}
+  <div class="col">
+    <div class="card">
+      <a href="{% url 'news_detail' news.slug %}"><img src="{{ news.image.url }}" class="card-img-top" alt="img" /></a>
+      <div class="card-body">
+        <a href="{% url 'news_detail' news.slug %}"><h5 class="card-title">{{ news.title }}</h5></a>
+        <p class="card-text">
+          {{ news.body | truncatewords:30 }}
+        </p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

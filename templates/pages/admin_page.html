@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}
+	Admin Page
+{% endblock %}
+
+{% block content %}
+    <h1>Admins Page</h1>
+    <p>Admins list</p>
+    <table class="table table-bordered table-responsive table-success">
+    <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+    </tr>
+        {% for admin in admins_list %}
+         <tr>
+        <td>{{ admin.username }}</td>
+        <td>{{ admin.first_name }}</td>
+        <td>{{ admin.last_name }}</td>
+         </tr>
+        {% endfor %}
+    </table>
+    <h4><a href="{% url 'create_news' %}" style="color: mediumspringgreen">+ Add news</a></h4>
+{% endblock %}

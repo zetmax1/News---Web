@@ -31,11 +31,13 @@
 		<div class="col-md-5">
 		 <div class="top_head_right">
 		   <div class="input-group p-1 bg_light  border_light">
-				<input type="text" class="form-control bg-transparent border-0" placeholder="Search Here">
+               <form method="get" action="{% url 'search_results' %}">
+				<input type="search" class="form-control bg-transparent border-0" placeholder="Search Here" name="q">
 				<span class="input-group-btn">
 					<button class="btn btn-primary bg_orange rounded-0 p-2 px-3 border-0" type="button">
 						<i class="bi bi-search"></i> </button>
 				</span>
+                   </form>
 		</div>
 		 </div>
 		</div>
@@ -47,7 +49,7 @@
 		     <ul class="mb-0 d-flex justify-content-end social_brands">
 			    <li><a class="d-inline-block" href="{% url 'login' %}">Login</a></li>
 				<li class="mx-2 text-muted">/</li>
-				<li><a class="d-inline-block" href="#">Register</a></li>
+				<li><a class="d-inline-block" href="{% url 'register' %}">Register</a></li>
 			  </ul>
 			{% endif %}
 		 </div>
@@ -152,8 +154,8 @@
             Pages<img src="{% static 'images/icons-svg/chevron-down.svg' %}" width="15" height="15" alt="Submenu open/close icon">
           </a>
           <ul class="dropdown-menu drop_1 shadow" aria-labelledby="navbarDropdown">
-			 <li><a class="dropdown-item" href="login.html"> Login</a></li>
-			<li><a class="dropdown-item border-0" href="register.html"> Register</a></li>
+			 <li><a class="dropdown-item" href="{% url 'login' %}"> Login</a></li>
+			<li><a class="dropdown-item border-0" href="{% url 'register' %}"> Register</a></li>
           </ul>
         </li>
 				  
@@ -162,6 +164,13 @@
 					  Contact Us
 					  </a>
 				  </li>
+                   {% if request.user.is_superuser and request.user.is_authenticated %}
+                       <li class="nav-item">
+				      <a class="nav-link dropdown-toggle" href="{% url 'admin_page' %}" title="Visit home page">Only Admins
+					  </a>
+				  </li>
+
+                   {% endif %}
                </ul>
 			   <ul class="navbar-nav align-items-lg-center ms-auto icon_social">
 			        <li class="nav-item"> 
