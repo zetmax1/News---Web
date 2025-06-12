@@ -1,39 +1,64 @@
 import slugify
-
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
-from django.template.defaulttags import comment, querystring
-from .models import News, Category
 from .forms import ContactForm, CommentsForm
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
-import random
 from news_project.costum_permessions import OnlyLoggedSuperUsers
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.text import slugify
-# from hitcount.models import HitCountMixin, get_hitcount_model
-# from hitcount.views import HitCountDetailView
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.contenttypes.models import ContentType
+from hitcount.models import HitCount, Hit
+from django.utils import timezone
+from django.conf import settings
+import random
+from .models import News, Category
+
 
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news)
-    # context = {}
-    # hit_count = get_hitcount_model().objects.get_for_object(news)
-    # hits = hit_count.hits
-    # hitcontext = context['hitcount'] = {'pk': hit_count.pk}
-    # hit_count_response = HitCountMixin.hit_count(request, hit_count)
-    # if hit_count_response.hit_counted:
-    #     hits += 1
-    #     hitcontext['hitcounted'] = hit_count_response.hit_counted
-    #     hitcontext['hit_message'] = hit_count_response.hit_message
-    #     hitcontext['total_hits'] = hits
+    context = {}
+    content_type = ContentType.objects.get_for_model(News)
+    hit_count, created = HitCount.objects.get_or_create(
+        object_pk=news.pk,
+        content_type=content_type
+    )
+
+    session_key = request.session.session_key or request.META.get('REMOTE_ADDR', 'no-ip')
+    if not request.session.session_key:
+        request.session.create()
+
+    hit_exists = Hit.objects.filter(
+        hitcount=hit_count,
+        session=session_key,
+        created__gte=timezone.now() - timezone.timedelta(seconds=settings.HITCOUNT_HITS_PER_IP_WINDOW)
+    ).exists()
+
+    if not hit_exists and request.method == 'GET':
+        hit = Hit.objects.create(
+            hitcount=hit_count,
+            session=session_key,
+            ip=request.META.get('REMOTE_ADDR', '0.0.0.0'),
+            user_agent=request.META.get('HTTP_USER_AGENT', ''),
+            user=request.user if request.user.is_authenticated else None
+        )
+        hit_count.hits = Hit.objects.filter(hitcount=hit_count).count()
+        hit_count.save()
+
+    context['hitcount'] = {
+        'pk': hit_count.pk,
+        'hit_counted': not hit_exists,
+        'hit_message': 'Hit counted successfully' if not hit_exists else 'Hit already counted',
+        'total_hits': hit_count.hits,
+    }
 
     categories = Category.objects.prefetch_related('news').all()
-    lastest_news = News.published.all().order_by('-publish_time')[:5]
+    latest_news = News.published.all().order_by('-publish_time')[:5]
     shuffle_news = list(News.published.all())
     random.shuffle(shuffle_news)
-    comments = news.comments.filter(active= True)
+    comments = news.comments.filter(active=True)
     new_comment = None
 
     if request.method == 'POST':
@@ -47,18 +72,64 @@ def news_detail(request, news):
     else:
         comment_form = CommentsForm()
     comment_count = comments.count()
-    context = {
+    context.update({
         'news': news,
-        'latest_news': lastest_news,
+        'latest_news': latest_news,
         'categories': categories,
         'shuffle_news': shuffle_news,
         'comment_form': comment_form,
         'comments': comments,
         'new_comment': new_comment,
         'comment_count': comment_count,
-    }
+    })
 
     return render(request, 'news/news_detail.html', context=context)
+
+
+
+# def news_detail(request, news):
+#     news = get_object_or_404(News, slug=news)
+#     context = {}
+#     hit_count = get_hitcount_model().objects.get_for_object(news)
+#     hits = hit_count.hits
+#     hitcontext = context['hitcount'] = {'pk': hit_count.pk}
+#     hit_count_response = update_hit_count(request, hit_count)
+#     if hit_count_response.hit_counted:
+#         hits += 1
+#         hitcontext['hit_counted'] = hit_count_response.hit_counted
+#         hitcontext['hit_message'] = hit_count_response.hit_message
+#         hitcontext['total_hits'] = hits
+#
+#     categories = Category.objects.prefetch_related('news').all()
+#     lastest_news = News.published.all().order_by('-publish_time')[:5]
+#     shuffle_news = list(News.published.all())
+#     random.shuffle(shuffle_news)
+#     comments = news.comments.filter(active= True)
+#     new_comment = None
+#
+#     if request.method == 'POST':
+#         comment_form = CommentsForm(data=request.POST)
+#         if comment_form.is_valid():
+#             new_comment = comment_form.save(commit=False)
+#             new_comment.news = news
+#             new_comment.user = request.user
+#             new_comment.save()
+#             return redirect('news_detail', news=news.slug)
+#     else:
+#         comment_form = CommentsForm()
+#     comment_count = comments.count()
+#     context = {
+#         'news': news,
+#         'latest_news': lastest_news,
+#         'categories': categories,
+#         'shuffle_news': shuffle_news,
+#         'comment_form': comment_form,
+#         'comments': comments,
+#         'new_comment': new_comment,
+#         'comment_count': comment_count,
+#     }
+#
+#     return render(request, 'news/news_detail.html', context=context)
 
 # def homePageView(request):
 #     first_news = News.published.all().order_by('-publish_time')[:1]
@@ -209,7 +280,7 @@ class SportNewsView(ListView):
 
 class NewsUpdateView(OnlyLoggedSuperUsers, UpdateView):
     model = News
-    fields = ('title', 'body', 'image', 'status', )
+    fields = ('title', 'body', 'image', 'status',)
     template_name = 'crud/news_update.html'
 
 class NewsDeleteView(OnlyLoggedSuperUsers, DeleteView):
@@ -221,7 +292,7 @@ class NewsDeleteView(OnlyLoggedSuperUsers, DeleteView):
 class NewsCreateView(OnlyLoggedSuperUsers, CreateView):
     model = News
     template_name = 'crud/news_create.html'
-    fields = ['title', 'body','image', 'category', 'publish_time', 'status']  # Slugni ko'rsatmang
+    fields = ['title', 'title_uz', 'title_en', 'title_ru', 'body', 'body_uz', 'body_en', 'body_ru','image', 'category', 'publish_time', 'status']
 
     def form_valid(self, form):
         if not form.instance.slug:

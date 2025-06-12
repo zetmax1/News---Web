@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-
+{% load hitcount_tags %}
  <section id="center" class="center_home">
    <div class="container-fluid px-0">
      <div class="row row-cols-1 row-cols-md-2 center_home1 mx-0">
@@ -138,7 +138,7 @@
 				  <b class="d-block"><a class="fs-5" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
 				  <p class="mt-3 mb-3">{{news.body | truncatewords:20 }}</p>
 				   <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time| naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %}<i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time| naturaltime}} </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -182,28 +182,16 @@
 		   <div class="news_1_right2 mt-4">
 		     <b class="fs-5  d-inline-block text-uppercase">New <span class="col_orange">Comments</span></b>
 	         <hr class="line bg_orange mt-2 mb-4">
-			 <ul class="mb-0 mt-4">
-		     <li class="d-flex">
-			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/13.jpg' %}"></a></span>
-			   <span class="flex-column lh-1 bg-black p-2">
-				    <span class="text-white font_14">  Lorem Amet</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Vestibulum quis  magna  bibendum</a></span>
+			 <ul class="mb-0 mt-4" >
+	       {% for comment in latest_comments %}
+        	<li class="d-flex mt-3" >
+			   <span class="flex-column lh-1" >
+				    <span class="text-white font_14" ><a href="{{  comment.news.get_absolute_url }}" style="color: black">{{ comment.user }} | {{ comment.body | truncatewords:10 }}</a> </span>
+                   <span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0" ><a href="{{  comment.news.get_absolute_url }}" style="color: black">{{ comment.news.title | truncatewords:10 }}</a></span>
 			   </span>
 			 </li>
-			 <li class="d-flex mt-3">
-			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/14.jpg' %}"></a></span>
-			   <span class="flex-column lh-1 bg-black p-2">
-				    <span class="text-white font_14">  Porta Sem</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Integer non nisl elit quis sem quis</a></span>
-			   </span>
-			 </li>
-			 <li class="d-flex mt-3">
-			   <span class="me-2"><a href="#"><img  alt="abc" src="{% static 'images/15.jpg' %}"></a></span>
-			   <span class="flex-column lh-1 bg-black p-2">
-				    <span class="text-white font_14">  Ipsum Quis</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Accumsan quis ante eleifend porta</a></span>
-			   </span>
-			 </li>
+
+        {% endfor %}
 		   </ul>
 			</div>
 		 </div>
@@ -365,11 +353,10 @@
 		{% else %}
 		 <ul class="mb-0 mt-3 justify-content-between d-flex">
 		   <li>
-		     <b class="d-block  mb-1"><a href="#">{{news.title }}</a></b>
+		     <b class="d-block  mb-1"><a href="{{ news.get_absolute_url }}">{{news.title }}</a></b>
 				 <span class="text-muted font_12 text-uppercase">
 				 <i class="bi bi-calendar me-1 col_orange"></i> {{news.updated_time | date:'d F'}}
-				 <i class="bi bi-heart me-1 col_orange ms-2"></i> 
-								 18</span>
+				<i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %}</span>
 		   </li>
 		 </ul>
 		 {% endif %}
@@ -411,11 +398,10 @@
 		{% else %}
 		 <ul class="mb-0 mt-3 justify-content-between d-flex">
 		   <li>
-		     <b class="d-block  mb-1"><a href="#">{{news.title }}</a></b>
+		     <b class="d-block  mb-1"><a  href="{{news.get_absolute_url}}">{{news.title }}</a></b>
 				 <span class="text-muted font_12 text-uppercase">
 				 <i class="bi bi-calendar me-1 col_orange"></i> {{news.updated_time | date:'d F'}}
-				 <i class="bi bi-heart me-1 col_orange ms-2"></i> 
-								 18</span>
+				<i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %}</span>
 		   </li>
 		 </ul>
 		 {% endif %}
@@ -439,7 +425,7 @@
 			   <span class="flex-column">
 				 <b class="d-block   mt-2"><a class="text-white" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7 }}</a></b>
 				 <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span class="text-white mt-2"><i class="bi bi-eye col_orange me-1"></i> 163 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 38 </span>
+				   <span class="text-white mt-2"><i class="bi bi-eye col_orange me-1"></i>  {% get_hit_count for news %}<i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 38 </span>
 				   <span class="text-warning mt-1">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -494,7 +480,7 @@
 				  <b class="d-block"><a class="fs-5" href="{{news.get_absolute_url}}">{{news.title}}</a></b>
 				  <p class="mt-3 mb-3">{{news.body | truncatewords:40}}</p>
 				   <span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}} <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i>  {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}} </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -533,7 +519,7 @@
 		  <li>
 		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
 			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i>  {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -556,7 +542,7 @@
 		  <li>
 		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
 			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}   </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -579,7 +565,7 @@
 		  <li>
 		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
 			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}   </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>
@@ -602,7 +588,7 @@
 		  <li>
 		    <b class="d-block mb-2"><a class="font_14" href="{{news.get_absolute_url}}">{{news.title | truncatewords:7}}</a></b>
 			<span class="d-block font_12 text-uppercase text-muted d-flex justify-content-between">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 123 <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  <i class="bi bi-heart col_orange ms-2 me-1"></i> 34 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i>  {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{news.updated_time | naturaltime}}  </span>
 				   <span class="text-warning">
 				     <i class="bi bi-star-fill"></i>
 					 <i class="bi bi-star-fill"></i>

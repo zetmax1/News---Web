@@ -1,0 +1,118 @@
+/*
+Template Name: Gen Magazine
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+
+/*********************team****************/
+.team_h1i1 ul{
+	background:var(--bs-dark);
+	border-radius:30px;
+	padding:10px;
+ }
+.team_h1i1 ul li{
+	display:block;
+	margin-top:5px;
+	margin-bottom:5px; 
+ }
+.team_h1i1 ul li a{
+	background:var(--orange);
+	width:35px;
+	height:35px;
+	line-height:35px;
+	display:inline-block;
+	text-align:center;
+	border-radius:50%;
+	color: var(--bs-white);
+ }
+
+.team_h1i1 {
+	right:20px;
+	bottom:40px;
+	display:none;
+ }
+.team_h1m:hover .team_h1i1{
+	display:block; 
+ }
+.team_h1mo1{
+	background: var(--bs-dark); 
+ }
+.team_h1mo1{
+	padding:20px 15px; 
+ }
+.team_h1mo2 span{
+	background: var(--orange);
+	border:5px solid var(--bs-white);
+	display:inline-block;
+	width:45px;
+	height:45px;
+	line-height:36px;
+	color:var(--bs-white);
+	text-align:center;
+	border-radius:50%;
+ }
+.team_h1mo2{
+	top:-22px;
+	right:20px; 
+ }
+ 
+.contact_pg1_left1 span a {
+    border: 3px solid var(--bs-white);
+    width: 70px;
+    height: 70px;
+	line-height:68px;
+	font-size:30px;
+	border-radius:50%;
+	display:inline-block;
+	text-align:center;
+	color:var(--bs-white);
+	transition: 0.3s;
+}
+.contact_pg1_left1 span a:hover {
+    background:var(--bs-white);
+	color:var(--orange);
+}
+
+/*********************team_end****************/
+
+
+@media screen and (max-width : 767px){
+.team_h1mo  {
+   margin-bottom:15px;
+ }
+.contact_pg1_right {
+    margin-top:15px;
+ }
+ }
+
+
+@media (min-width:576px) and (max-width:767px) {
+
+
+ }
+ 
+@media (min-width:768px) and (max-width:991px) {
+.team_h1mo  {
+   margin-bottom:15px;
+ }
+ 
+ }
+
+@media (min-width:992px) and (max-width:1200px) {
+.team_h1i1 ul li a{
+	width:30px;
+	height:30px;
+	line-height:30px;
+ }
+ }
+
+@media (min-width:1201px) and (max-width:1300px) {
+
+ }
+@media (min-width:1400px) and (max-width:2000px) {
+
+ }
+
+

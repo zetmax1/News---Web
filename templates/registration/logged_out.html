@@ -1,14 +1,13 @@
 {% extends 'news/base.html' %}
 {% load static %}
-{% block title %} Logged out Page {% endblock title %}
+{% block title %} Logout Page {% endblock title %}
 
 {% block content %}
-<h2><a href="{%url 'login'%}">Login again</a></h2>
-<h2><a href="{%url 'home_page'%}">Home</a></h2>
+<h3>Are you sure to logout?</h3>
 <form method="post" action="{% url 'logout' %}">
-{% csrf_token %}
-<button type="submit" class="btn btn-danger">Logout</button>
-</form>
-
-
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form><br>
+<p><a href="{% url 'login' %}">Login again</a></p>
+<p><a href="{% url 'home_page' %}">Home</a></p>
 {% endblock %}

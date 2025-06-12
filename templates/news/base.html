@@ -1,11 +1,14 @@
 {% load static %}
+{% load i18n %}
+{% load humanize %}
+{% load hitcount_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %} Yuta News {% endblock %} </title>
+	<title>{% block title %} YutaNews {% endblock %} </title>
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
 	<link href="{% static 'css/global.css' %}" rel="stylesheet">
 	<link href="{% static 'css/index.css' %}" rel="stylesheet">
@@ -23,7 +26,7 @@
 		    <b class="text-uppercase fs-1 lh-1">
 			<a href="{% url 'home_page' %}">
 			<span class="col_orange">Yuta</span>News
-			<span class="d-block text-muted font_12 ms-1 fw-normal">Latest News</span>
+			<span class="d-block text-muted font_12 ms-1 fw-normal">{% blocktrans %}Latest News {% endblocktrans %}</span>
 			</a>
 			</b>
 		 </div>
@@ -47,9 +50,9 @@
 			<p><a href="{% url 'user_profile' %}">My profile</a></p>
 			{% else %}
 		     <ul class="mb-0 d-flex justify-content-end social_brands">
-			    <li><a class="d-inline-block" href="{% url 'login' %}">Login</a></li>
+			    <li><a class="d-inline-block" href="{% url 'login' %}">{% blocktrans %}Login{% endblocktrans %}</a></li>
 				<li class="mx-2 text-muted">/</li>
-				<li><a class="d-inline-block" href="{% url 'register' %}">Register</a></li>
+				<li><a class="d-inline-block" href="{% url 'register' %}">{% blocktrans %}Register{% endblocktrans %}</a></li>
 			  </ul>
 			{% endif %}
 		 </div>
@@ -62,7 +65,7 @@
         <nav class="navbar navbar-expand-lg navbar-light w-100 border-bottom border-top">
       <div class="container-xl">
          <a class="d-flex" href="index.html">
-			 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i> Gen Magazine</b>
+			 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i> {% blocktrans %}Gen Magazine{% endblocktrans %}</b>
 	     </a>
          <button class="navbar-toggler offcanvas-nav-btn  ms-auto me-3" type="button">
             <img src="{% static 'images/icons-svg/list.svg' %}" width="40" height="40" alt="Open TemplateOnweb website menu"/>
@@ -70,7 +73,7 @@
          <div class="offcanvas offcanvas-start offcanvas-nav" style="width: 20rem">
             <div class="offcanvas-header shadow">
 			    <a class="d-flex" href="index.html">
-					 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i> Gen Magazine</b>
+					 <b class="fs-3  d-block logo hide"> <i class="bi bi-newspaper  me-1 align-middle col_orange"></i>{% blocktrans %} Gen Magazine{% endblocktrans %}</b>
 				 </a>
                <img src="{% static 'images/icons-svg/x.svg' %}" width="40" height="40" class="ms-auto" data-bs-dismiss="offcanvas" aria-label="Close" alt="Close TemplateOnweb website menu"/>
 			   
@@ -84,12 +87,12 @@
 				  </li>
 				  <li class="nav-item"> 
 				      <a class="nav-link dropdown-toggle" href="{% url 'local_news' %}" title="Visit home page">
-					  Local
+					{% blocktrans %}  Local {% endblocktrans %}
 					  </a>
 				  </li>
 				  <li class="nav-item"> 
 				      <a class="nav-link dropdown-toggle" href="{% url 'world_news' %}" title="Visit home page">
-					  World
+					{% blocktrans %}  World {% endblocktrans %}
 					  </a>
 				  </li>
 				  
@@ -100,8 +103,8 @@
             News<img src="{% static 'images/icons-svg/chevron-down.svg' %}" width="15" height="15" alt="Submenu open/close icon">
           </a>
           <ul class="dropdown-menu drop_1 shadow" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'sport_news' %}"> Sport</a></li>
-			<li><a class="dropdown-item border-0" href="{% url 'technology_news' %}"> Technology</a></li>
+            <li><a class="dropdown-item" href="{% url 'sport_news' %}"> {% blocktrans %}Sport{% endblocktrans %}</a></li>
+			<li><a class="dropdown-item border-0" href="{% url 'technology_news' %}">{% blocktrans %} Technology{% endblocktrans %}</a></li>
           </ul>
         </li>
 		
@@ -110,36 +113,36 @@
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Click to see Blogs category">
 					   Popular News<img src="{% static 'images/icons-svg/chevron-down.svg' %}" width="15" height="15" alt="Submenu open/close icon"></a>
                      <ul class="dropdown-menu shadow drop_1 shadow">
-                        <li><a class="dropdown-item" href="{% url 'local_news' %}">Local</a></li>
+                        <li><a class="dropdown-item" href="{% url 'local_news' %}">{% blocktrans %}Local{% endblocktrans %}</a></li>
                         
                         <li class="dropdown-submenu dropend">
-                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Sports <img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">{% blocktrans %}Sports {% endblocktrans %}<img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
                            <ul class="dropdown-menu">
                               <li>
-                                 <a class="dropdown-item" href="{% url 'sport_news' %}">Latest</a>
+                                 <a class="dropdown-item" href="{% url 'sport_news' %}">{% blocktrans %}Latest{% endblocktrans %}</a>
                               </li>
                               <li>
-                                 <a class="dropdown-item border-0" href="{% url 'sport_news' %}">Popular</a>
+                                 <a class="dropdown-item border-0" href="{% url 'sport_news' %}">{% blocktrans %}Popular{% endblocktrans %}</a>
                               </li>
                            </ul>
                         </li>
 						
 						<li class="dropdown-submenu dropend">
-                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">World <img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">{% blocktrans %}World{% endblocktrans  %} <img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
                            <ul class="dropdown-menu">
                               <li>
-                                 <a class="dropdown-item" href="{% url 'world_news' %}">Popular</a>
+                                 <a class="dropdown-item" href="{% url 'world_news' %}">{% blocktrans %}Popular{% endblocktrans %}</a>
                               </li>
                               <li>
-                                 <a class="dropdown-item border-0" href="{% url 'world_news' %}">World News</a>
+                                 <a class="dropdown-item border-0" href="{% url 'world_news' %}">{% blocktrans %}World News{% endblocktrans %}</a>
                               </li>
                            </ul>
                         </li>
 						<li class="dropdown-submenu dropend">
-                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">Technology <img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
+                           <a class="dropdown-item dropdown-toggle border-0" href="javascript:void(0);">{% blocktrans %}Technology{% endblocktrans %} <img src="{% static 'images/icons-svg/chevron-right.svg' %}" width="15" height="15"></a>
                            <ul class="dropdown-menu">
                               <li>
-                                 <a class="dropdown-item border-0" href="{% url 'technology_news' %}">News</a>
+                                 <a class="dropdown-item border-0" href="{% url 'technology_news' %}">{% blocktrans %}News{% endblocktrans %}</a>
                               </li>
                            </ul>
                         </li>
@@ -154,8 +157,8 @@
             Pages<img src="{% static 'images/icons-svg/chevron-down.svg' %}" width="15" height="15" alt="Submenu open/close icon">
           </a>
           <ul class="dropdown-menu drop_1 shadow" aria-labelledby="navbarDropdown">
-			 <li><a class="dropdown-item" href="{% url 'login' %}"> Login</a></li>
-			<li><a class="dropdown-item border-0" href="{% url 'register' %}"> Register</a></li>
+			 <li><a class="dropdown-item" href="{% url 'login' %}"> {% blocktrans %}Login{% endblocktrans %}</a></li>
+			<li><a class="dropdown-item border-0" href="{% url 'register' %}"> {% blocktrans %}Register{% endblocktrans %}</a></li>
           </ul>
         </li>
 				  
@@ -166,11 +169,26 @@
 				  </li>
                    {% if request.user.is_superuser and request.user.is_authenticated %}
                        <li class="nav-item">
-				      <a class="nav-link dropdown-toggle" href="{% url 'admin_page' %}" title="Visit home page">Only Admins
+				      <a class="nav-link dropdown-toggle" href="{% url 'admin_page' %}" title="Visit home page">{% blocktrans %}Only Admins{% endblocktrans %}
 					  </a>
 				  </li>
-
                    {% endif %}
+                 <li class="nav-item">
+               <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                    </select>
+                    <input type="submit" value="Go">
+                    </form>
+                 </li>
                </ul>
 			   <ul class="navbar-nav align-items-lg-center ms-auto icon_social">
 			        <li class="nav-item"> 
@@ -199,14 +217,16 @@
 		   <div class="col">
 		    <div class="footer_1_left">
 			  <b class="text-uppercase fs-2 lh-1">
-			<a class="text-white" href="index.html">
-			<span class="col_orange">Gen</span>Magazine
-			<span class="d-block text-white-50 font_12 ms-1 fw-normal">Our Magazine Theme</span>
+			<a class="text-white" href="{% url 'home_page' %}">
+			<span class="col_orange">Yuta</span>News
+			<span class="d-block text-white-50 font_12 ms-1 fw-normal">Latest News</span>
 			</a>
 			</b>
-			<b class="text-uppercase  text-white-50 d-block mt-3">Multiconcept Magazine Theme Type</b>
-			<p class="mt-3 text-white-50">NSuspendisse bibendum efficitur orci, a pretium erat mattis nec. Vestibulum antema ypsumi primisot inaetahsjanl faucibus orci luctus etenjot ultrices posuere cubilia andt.</p>
-			<p class="mb-0 text-white-50">Vestibulum quis odio ut dui malesuada ornare ut id tellus. Curabitur viverra at magna ac bibendum. Aliquam erat volutpat. Proin rhoncus est ac ipsum varius fermentum. </p>
+			<b class="text-uppercase  text-white-50 d-block mt-3">Multiconcept there</b>
+                <p class="mt-3 text-white-50">
+    In today's fast-paced digital world, staying informed is more important than ever. This platform brings you the latest updates, in-depth insights, and trending stories across technology, innovation, and global developments. Discover what's happening around you with trusted and engaging content designed to keep you ahead.
+</p>
+
 			</div>
 		   </div>
 		   <div class="col">
@@ -214,53 +234,29 @@
 			 <b class="fs-5  d-inline-block text-uppercase text-white">Latest <span class="col_orange">Comments</span></b>
 	   <hr class="line bg_orange mt-2 mb-4">
 	   <ul class="mb-0">
-		     <li class="d-flex">
-			   <span class="me-3"><a href="#"><img alt="abc" src="{% static 'images/13.jpg' %}"></a></span>
+        {% for comment in latest_comments %}
+        	<li class="d-flex mt-3">
 			   <span class="flex-column lh-1">
-				    <span class="text-white font_14">  Lorem Amet</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Vestibulum quis  magna  bibendum</a></span>
+				    <span class="text-white font_14"><a href="{{  comment.news.get_absolute_url }}">{{ comment.user }} | {{ comment.body | truncatewords:10 }}</a> </span>
+                   <span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0" style="color: white"><a href="{{  comment.news.get_absolute_url }}">{{ comment.news.title | truncatewords:10 }}</a></span>
 			   </span>
 			 </li>
-			 <li class="d-flex mt-3">
-			   <span class="me-3"><a href="#"><img alt="abc" src="{% static 'images/14.jpg' %}"></a></span>
-			   <span class="flex-column lh-1">
-				    <span class="text-white font_14">  Porta Sem</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Integer non nisl elit quis sem quis</a></span>
-			   </span>
-			 </li>
-			 <li class="d-flex mt-3">
-			   <span class="me-3"><a href="#"><img alt="abc" src="{% static 'images/15.jpg' %}"></a></span>
-			   <span class="flex-column lh-1">
-				    <span class="text-white font_14">  Ipsum Quis</span>
-					<span class="d-block font_12 family_1  mt-2 pt-2 lh-base border_dark border-start-0 border-end-0 border-bottom-0"><a class="text-white-50 link" href="#">Accumsan quis ante eleifend porta</a></span>
-			   </span>
-			 </li>
-		   </ul>
+
+        {% endfor %}
+
+          </ul>
 			</div>
 		   </div>
 		   <div class="col">
 		    <div class="footer_1_left">
-			 <b class="fs-5  d-inline-block text-uppercase text-white">Subscribe <span class="col_orange">Us</span></b>
-	        <hr class="line bg_orange mt-2 mb-4">
-	        <input class="form-control bg-dark border-0 text-white"  type="text">
-			<span class="d-block mt-3"><a class="button py-2" href="#">Subscribe</a></span>
 			<b class="fs-5  d-inline-block text-uppercase text-white mt-4">Popular <span class="col_orange">Tags</span></b>
 	        <hr class="line bg_orange mt-2 mb-4">
 			<ul class="mb-0 d-flex flex-wrap font_13 text-uppercase">
-		     <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">News</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Headlines</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Politics</a></li>  
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Travel</a></li> 
-			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Event</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Lorem</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Porta</a></li>  
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Ipsum</a></li> 
-			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Eget</a></li>  
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Nulla</a></li> 
-			  <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Semper</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Quis</a></li>	
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Popular</a></li>  
-			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="news_detail.html">Trending</a></li> 
+		     <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="{% url 'local_news' %}">Local News</a></li>
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="{% url 'world_news' %}">World News</a></li>
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="{% url 'sport_news' %}">Sport</a></li>
+			 <li class="mx-1 mt-1 mb-1"><a class="d-block text-white-50 link" href="{% url 'technology_news' %}">Technology news</a></li>
+
 		   </ul>
 			</div>
 		   </div>
@@ -269,33 +265,19 @@
 			 <b class="fs-5  d-inline-block text-uppercase text-white">Recent <span class="col_orange">Posts</span></b>
 	        <hr class="line bg_orange mt-2 mb-4">
 	   <ul class="mb-0 mt-4">
-		     <li class="d-flex">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="{% static 'images/17.jpg' %}"></a></span>
+           {% for news in latest_news %}
+           	 <li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
+			   <span class="me-3"><a href="{{ news.get_absolute_url }}"><img width="70" alt="abc" src="{{ news.image.url }}"></a></span>
 			   <span class="flex-column">
-				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#">In ac tempor ante, eget  augue nuncekon</a></b>
+				    <b class="d-block mb-1"><a class="font_13 text-white link" href="{{ news.get_absolute_url }}"> {{ news.title }}</a></b>
 			<span class="d-block font_12 text-uppercase text-muted">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 129 <i class="bi bi-clock col_orange ms-2 me-1"></i> 08 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 14 </span>
+				   <span><i class="bi bi-eye col_orange me-1"></i> {% get_hit_count for news %} <i class="bi bi-clock col_orange ms-2 me-1"></i> {{ news.updated_time | naturaltime }} </span>
 				   </span>
 			   </span>
 			 </li>
-             <li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="{% static 'images/18.jpg' %}"></a></span>
-			   <span class="flex-column">
-				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#">Vestibulum quis  ut dui malesuada ornare</a></b>
-			<span class="d-block font_12 text-uppercase text-muted">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 139 <i class="bi bi-clock col_orange ms-2 me-1"></i> 09 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 13 </span>
-				   </span>
-			   </span>
-			 </li>	
-			 <li class="d-flex border_dark border-start-0 border-bottom-0 border-end-0 pt-3 mt-3">
-			   <span class="me-3"><a href="#"><img width="70" alt="abc" src="{% static 'images/19.jpg' %}"></a></span>
-			   <span class="flex-column">
-				    <b class="d-block mb-1"><a class="font_13 text-white link" href="#"> Bibendum efficitur orci, a pretium erat</a></b>
-			<span class="d-block font_12 text-uppercase text-muted">
-				   <span><i class="bi bi-eye col_orange me-1"></i> 119 <i class="bi bi-clock col_orange ms-2 me-1"></i> 07 Mins  <i class="bi bi-heart col_orange ms-2 me-1"></i> 17 </span>
-				   </span>
-			   </span>
-			 </li>		 
+           {% endfor %}
+
+
 		   </ul>
 			</div>
 		   </div>
@@ -322,7 +304,7 @@
 	 </div>
 	 <div class="col-md-8">
 	  <div class="footer_bottom1_left text-end">
-        <p class="mb-0 text-white-50">© 2013 Your Website Name. All Rights Reserved | Design by <a class="col_orange fw-bold" href="http://www.templateonweb.com">TemplateOnWeb</a></p>
+        <p class="mb-0 text-white-50">© 2025 YutaNews. All Rights Reserved </p>
 	  </div>
 	 </div>
    </div>

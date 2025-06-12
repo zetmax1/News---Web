@@ -5,8 +5,8 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView,
 
 urlpatterns = [
     # path('login/', user_login, name='login'),
-    path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutViewCustom.as_view(), name='logout'),
+    path('login/', LoginView.as_view(), name='login'),
     path('password-change/', PasswordChangeView.as_view(), name="password_change"),
     path('password-change-done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('password-reset/', PasswordResetView.as_view(), name='password_reset'),

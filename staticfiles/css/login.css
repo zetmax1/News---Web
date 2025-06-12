@@ -1,0 +1,70 @@
+/*
+Template Name: Gen Magazine
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+
+/*********************team****************/
+
+.login_1 {
+    width: 85%;
+}
+.login_1r {
+    border-radius: 0px 10px 10px 0px;
+    min-height: 711px;
+}
+.login_1l img{
+	min-height:711px;
+ }
+/*********************team_end****************/
+
+
+@media screen and (max-width : 767px){
+.login_1 {
+    width: 100%;
+}
+.login_1r {
+    min-height: auto;
+}
+.login_1l img{
+	min-height:auto;
+ }
+.login_1ri1{
+    margin-top:10px; 
+ }
+
+ }
+
+
+@media (min-width:576px) and (max-width:767px) {
+
+
+ }
+ 
+@media (min-width:768px) and (max-width:991px) {
+.login_1 {
+    width: 100%;
+}
+ 
+ }
+
+@media (min-width:992px) and (max-width:1200px) {
+
+
+ }
+
+@media (min-width:1201px) and (max-width:1300px) {
+
+ }
+@media (min-width: 1400px) {  
+.login_1r {
+    min-height: 826px;
+}
+.login_1l img{
+	min-height:826px;
+ }
+}
+
+

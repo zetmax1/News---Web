@@ -37,8 +37,12 @@ def user_login(reqeust):
 
 class LogoutViewCustom(View):
     def get(self, request):
+        return render(request, 'registration/logged_out.html')
+
+    def post(self, request):
         logout(request)
-        return HttpResponse('<h2>You logged out</h2>')
+        return redirect('login')
+
 @login_required()
 def dashboard(request):
     user = request.user
